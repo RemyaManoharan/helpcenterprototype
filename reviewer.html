@@ -443,6 +443,44 @@ document.addEventListener('DOMContentLoaded', async function() {
 
   <script>
   (function () {
+    function findSmallestWithText(text) {
+      var all = document.querySelectorAll('*');
+      var best = null;
+      for (var i = 0; i < all.length; i++) {
+        var el = all[i];
+        if (el.textContent.trim() === text) {
+          if (!best || el.children.length < best.children.length) best = el;
+        }
+      }
+      return best;
+    }
+    function wireStartHereStep1() {
+      var label = findSmallestWithText('Who can write a review and when?');
+      if (!label) return false;
+      var card = label;
+      for (var i = 0; i < 8 && card; i++) {
+        if (getComputedStyle(card).backgroundColor === 'rgb(242, 242, 242)') break;
+        card = card.parentElement;
+      }
+      if (!card || card.dataset.startHereWired) return true;
+      card.dataset.startHereWired = '1';
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', function () {
+        window.location.href = 'article.html';
+      });
+      return true;
+    }
+    var tries = 0;
+    var interval = setInterval(function () {
+      var done = wireStartHereStep1();
+      tries++;
+      if (done || tries > 40) clearInterval(interval);
+    }, 250);
+  })();
+  </script>
+
+  <script>
+  (function () {
     function wireLogo() {
       var spans = document.querySelectorAll('span');
       for (var i = 0; i < spans.length; i++) {
