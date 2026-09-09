@@ -163,7 +163,7 @@ const HELP_CENTER_DATA = {
       },
       {
         id: "rev-flagged-reviews-and-appeals",
-        label: "Flagged Reviews & Appeals",
+        label: "Flagged (Reported) Reviews & Appeals",
         subtopics: [
           {
             id: "rev-how-to-flag-review",
@@ -459,7 +459,7 @@ const HELP_CENTER_DATA = {
       },
       {
         id: "biz-afs",
-        label: "AFS",
+        label: "Automatic Feedback Service (AFS)",
         subtopics: [
           {
             id: "biz-standard-afs-guides",

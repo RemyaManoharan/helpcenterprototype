@@ -1,0 +1,18 @@
+<template>
+    <div class="onboarding">
+        <p class="eyebrow">New to Trustpilot? Start here</p>
+        <h2 class="heading">{heading}</h2>
+        <div class="objective-grid">
+            <template for:each={objectives} for:item="objective">
+                <div class="objective-card" key={objective.id}>
+                    <h3 class="objective-title">{objective.title}</h3>
+                    <ul class="checklist">
+                        <template for:each={objective.items} for:item="item">
+                            <li key={item} class="checklist-item">{item}</li>
+                        </template>
+                    </ul>
+                </div>
+            </template>
+        </div>
+    </div>
+</template>
