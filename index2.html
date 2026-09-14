@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home (preview) - Trustpilot Help Center</title>
+<style>
+  @font-face {
+    font-display: swap;
+    font-family: "Trustpilot Sans";
+    font-style: normal;
+    font-weight: 300;
+    src: url("https://cdn.trustpilot.net/brand-assets/5.3.0/fonts/Trustpilot-Sans.woff2") format("woff2"),
+         url("https://cdn.trustpilot.net/brand-assets/5.3.0/fonts/Trustpilot-Sans.woff") format("woff");
+  }
+  @font-face {
+    font-display: swap;
+    font-family: "Trustpilot Sans";
+    font-style: normal;
+    font-weight: 450;
+    src: url("https://cdn.trustpilot.net/brand-assets/5.3.0/fonts/Trustpilot-Sans.woff2") format("woff2"),
+         url("https://cdn.trustpilot.net/brand-assets/5.3.0/fonts/Trustpilot-Sans.woff") format("woff");
+  }
+  @font-face {
+    font-display: swap;
+    font-family: "Trustpilot Sans";
+    font-weight: 575;
+    src: url("https://cdn.trustpilot.net/brand-assets/5.3.0/fonts/Trustpilot-Sans.woff2") format("woff2"),
+         url("https://cdn.trustpilot.net/brand-assets/5.3.0/fonts/Trustpilot-Sans.woff") format("woff");
+  }
+  @font-face {
+    font-display: swap;
+    font-family: "Trustpilot Sans";
+    font-weight: 650;
+    src: url("https://cdn.trustpilot.net/brand-assets/5.3.0/fonts/Trustpilot-Sans.woff2") format("woff2"),
+         url("https://cdn.trustpilot.net/brand-assets/5.3.0/fonts/Trustpilot-Sans.woff") format("woff");
+  }
+  @font-face {
+    font-display: swap;
+    font-family: "Trustpilot Display";
+    font-weight: 800;
+    src: url("https://cdn.trustpilot.net/brand-assets/5.3.0/fonts/Trustpilot-Display-Extrabold.woff2") format("woff2"),
+         url("https://cdn.trustpilot.net/brand-assets/5.3.0/fonts/Trustpilot-Display-Extrabold.woff") format("woff");
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Trustpilot Sans", Arial, sans-serif;
+    font-weight: 450;
+    color: #2D2F29;
+    background: #ffffff;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  .preview-banner {
+    background: #FFF4CC;
+    color: #5A4B00;
+    font-size: 13px;
+    text-align: center;
+    padding: 8px 16px;
+    border-bottom: 1px solid #E9D98A;
+  }
+
+  header { border-bottom: 1px solid #E5E5E5; }
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+  }
+  .logo { display: flex; align-items: center; gap: 8px; font-size: 18px; font-weight: 700; cursor: pointer; }
+  .logo svg { width: 22px; height: 22px; }
+  nav { display: flex; align-items: center; gap: 28px; font-size: 14px; }
+  nav a { cursor: pointer; }
+  nav a:hover { text-decoration: underline; }
+
+  .hero {
+    background: #022A1C;
+    color: #ffffff;
+    padding: 56px 40px 40px;
+    text-align: center;
+  }
+  .hero h1 { font-family: "Trustpilot Display", Arial, sans-serif; font-size: 48px; font-weight: 800; margin-bottom: 12px; }
+  .hero .hero-subtitle { font-size: 16px; color: #C9D4CC; margin-bottom: 28px; }
+  .hero-search {
+    max-width: 640px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 0 8px 0 16px;
+    height: 52px;
+  }
+  .hero-search input { flex: 1; border: none; outline: none; font-size: 15px; font-family: inherit; color: #2D2F29; height: 100%; }
+  .hero-search input::placeholder { color: #8B8880; }
+  .hero-search button {
+    width: 40px; height: 40px; flex-shrink: 0; border: none; border-radius: 6px;
+    background: #022A1C; color: #ffffff; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  }
+  .hero-search button:hover { background: #04140F; }
+  .hero-tags { display: flex; justify-content: center; gap: 24px; margin-top: 20px; flex-wrap: wrap; font-size: 13px; }
+  .hero-tags a { display: flex; align-items: center; gap: 8px; color: #ffffff; }
+  .hero-tags a:hover { text-decoration: underline; }
+  .hero-tags .dot { width: 8px; height: 8px; background: #04DA8D; flex-shrink: 0; }
+
+  .promo-row {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 56px 24px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .promo-card {
+    border: 1px solid #DCD6D1;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .promo-card.reviewer { background: #FFC2A6 !important; }
+  .promo-card.business { background: #BFB9F1 !important; }
+  .promo-card.reviewer .promo-title, .promo-card.reviewer .promo-link { color: #5A1B0C; }
+  .promo-card.business .promo-title, .promo-card.business .promo-link { color: #33236A; }
+  .promo-card .promo-title { font-size: 18px; font-weight: 575; }
+  .promo-card .promo-link { font-size: 16px; }
+  .promo-card .promo-link:hover { text-decoration: underline; }
+  .promo-card::after {
+    content: '';
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    width: 72px;
+    height: 72px;
+    transform: translateY(-50%);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .promo-card.reviewer::after {
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80'><path d='M80 80H70V70H80V80ZM50 10H60V20H70V50H60V60H50V70H20V60H10V50H0V20H10V10H20V0H50V10ZM70 70H60V60H70V70ZM35.0078 13.001C22.8576 13.001 13.0078 22.8507 13.0078 35.001C13.008 47.1511 22.8577 57.001 35.0078 57.001C47.1579 57.001 57.0076 47.1511 57.0078 35.001C57.0078 22.8507 47.158 13.001 35.0078 13.001Z' fill='%235A1B0C'/></svg>");
+  }
+  .promo-card.business::after {
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='144' height='144'><path d='M144.001 0.000975513L144.001 144L120.001 144L120.001 0.000976562L144.001 0.000975513ZM120 0L120 24L2.38399e-06 24L1.33491e-06 5.24537e-06L120 0ZM119.999 24.002L119.999 48.001L95.999 48.001L95.999 24.002L119.999 24.002ZM72 72L72 48.001L96 48.001L96 72.001L72.001 72.001L72.001 96L48.001 96L48.001 72L72 72ZM47.999 96.001L47.999 120.001L23.999 120.001L23.999 96.001L47.999 96.001ZM24 120.001L24 144.001L7.62939e-06 144.001L6.58032e-06 120.001L24 120.001Z' fill='%23473789'/></svg>");
+  }
+
+  .section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 24px 0;
+  }
+  .section-label {
+    font-size: 20px;
+    font-weight: 575;
+    line-height: 24px;
+    color: #2D2F29;
+  }
+  .section-sub {
+    font-size: 14px;
+    color: #605E56;
+    margin-top: 4px;
+  }
+
+  .topics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+  }
+  .card {
+    border: 1px solid #DCD6D1;
+    background: #FFFFFE;
+    padding: 24px;
+  }
+  .card h3 { font-size: 18px; font-weight: 575; margin-bottom: 16px; }
+  .topic-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 10px 0;
+    border-top: 1px solid #E5E5E5;
+  }
+  .topic-row a { font-size: 14px; }
+  .topic-row a:hover { color: #04A672; text-decoration: underline; }
+  .badge {
+    font-family: "Trustpilot Sans", Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 3px 8px;
+    white-space: nowrap;
+  }
+  .badge.reviewer { color: #5A1B0C; background: #FFC2A6; }
+  .badge.business { color: #33236A; background: #BFB9F1; }
+
+  /* Release notes */
+  .release-list { margin-top: 20px; }
+  .release-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 0;
+    border-top: 1px solid #E5E5E5;
+  }
+  .release-list .release-row:first-child { border-top: 1px solid #E5E5E5; }
+  .release-info a {
+    font-size: 16px;
+    font-weight: 575;
+    color: #2D2F29;
+  }
+  .release-info a:hover { color: #04A672; text-decoration: underline; }
+  .release-info p {
+    font-size: 14px;
+    color: #605E56;
+    margin-top: 4px;
+  }
+  .release-date {
+    font-size: 13px;
+    color: #8B8880;
+    white-space: nowrap;
+    padding-top: 3px;
+  }
+
+  /* FAQ accordion */
+  .faq-list { margin-top: 20px; }
+  .faq-item { border-top: 1px solid #E5E5E5; }
+  .faq-item:last-child { border-bottom: 1px solid #E5E5E5; }
+  .faq-question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 0;
+    background: none;
+    border: none;
+    text-align: left;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 575;
+    color: #2D2F29;
+    cursor: pointer;
+  }
+  .faq-question .plus {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    position: relative;
+  }
+  .faq-question .plus::before,
+  .faq-question .plus::after {
+    content: '';
+    position: absolute;
+    background: #2D2F29;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .faq-question .plus::before { width: 14px; height: 2px; }
+  .faq-question .plus::after { width: 2px; height: 14px; transition: transform 0.15s ease; }
+  .faq-item.open .faq-question .plus::after { transform: translate(-50%, -50%) scaleY(0); }
+  .faq-answer {
+    font-size: 14px;
+    color: #605E56;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.15s ease;
+  }
+  .faq-item.open .faq-answer { max-height: 320px; }
+  .faq-answer p { padding: 0 0 16px; padding-right: 36px; }
+  .faq-answer a { color: #04A672; }
+  .faq-answer a:hover { text-decoration: underline; }
+
+  .else-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 56px 24px;
+  }
+  .else-heading { font-size: 24px; font-weight: 575; line-height: 28.8px; color: #2D2F29; }
+  .else-row {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .else-card {
+    border: 1px solid #DCD6D1;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .else-card p { font-size: 14px; color: #605E56; }
+  .else-card a { font-size: 18px; font-weight: 575; color: #2D2F29; }
+  .else-card a:hover { text-decoration: underline; }
+
+  @media (max-width: 900px) {
+    .promo-row, .topics-grid { grid-template-columns: 1fr; }
+    .else-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="preview-banner">Preview — draft variant of the homepage. Not linked from navigation.</div>
+
+  <header>
+    <div class="header-inner">
+      <div class="logo" id="logo-home">
+        <svg viewBox="0 0 35.4453 33.3861" style="width:28px;height:26px" aria-hidden="true"><path fill="#04DA8D" d="M35.4453 12.7592H21.91L17.7292 0L13.5353 12.7592L0 12.7462L10.9615 20.6398L6.76765 33.3861L17.7292 25.5054L28.6776 33.3861L24.4968 20.6398L35.4453 12.7592Z"></path><path fill="#022A1C" d="M25.4375 23.5255L24.4968 20.6398L17.7292 25.5054L25.4375 23.5255Z"></path></svg>
+        Trustpilot
+      </div>
+      <nav>
+        <a href="reviewer.html">Reviewer</a>
+        <a href="business.html">Business</a>
+        <a href="https://developers.trustpilot.com/">Developers</a>
+        <a href="#">Contact Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero">
+    <h1>How can we help?</h1>
+    <div class="hero-subtitle">Find articles to help answer your questions</div>
+    <div class="hero-search">
+      <input type="search" placeholder="Search for help articles">
+      <button aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="#ffffff" stroke-width="2"></circle><path d="M21 21L16 16" stroke="#ffffff" stroke-width="2" stroke-linecap="round"></path></svg></button>
+    </div>
+    <div class="hero-tags">
+      <a href="#"><span class="dot"></span>Service Review Invitation</a>
+      <a href="#"><span class="dot"></span>My review got reported</a>
+      <a href="#"><span class="dot"></span>Verify my identity</a>
+    </div>
+  </div>
+
+  <div class="promo-row">
+    <div class="promo-card reviewer">
+      <div class="promo-title">For reviewers</div>
+      <a class="promo-link" href="reviewer.html">See reviewer articles →</a>
+    </div>
+    <div class="promo-card business">
+      <div class="promo-title">For businesses</div>
+      <a class="promo-link" href="business.html">See business articles →</a>
+    </div>
+  </div>
+
+  <!-- Common topics -->
+  <div class="section">
+    <div class="section-label">Common topics</div>
+    <div class="topics-grid">
+      <div class="card">
+        <h3>Getting started</h3>
+        <div class="topic-row"><a href="article.html">Create your reviewer profile</a><span class="badge reviewer">REVIEWER</span></div>
+        <div class="topic-row"><a href="article.html">Set up your business account</a><span class="badge business">BUSINESS</span></div>
+        <div class="topic-row"><a href="article.html">Write your first review</a><span class="badge reviewer">REVIEWER</span></div>
+      </div>
+      <div class="card">
+        <h3>Best practices &amp; how-tos</h3>
+        <div class="topic-row"><a href="article.html">Tips for writing helpful reviews</a><span class="badge reviewer">REVIEWER</span></div>
+        <div class="topic-row"><a href="article.html">Reply to a review the right way</a><span class="badge business">BUSINESS</span></div>
+        <div class="topic-row"><a href="article.html">Get more customer feedback</a><span class="badge business">BUSINESS</span></div>
+      </div>
+      <div class="card">
+        <h3>Troubleshooting</h3>
+        <div class="topic-row"><a href="article.html">I can't log in to my reviewer account</a><span class="badge reviewer">REVIEWER</span></div>
+        <div class="topic-row"><a href="article.html">I can't access my business account</a><span class="badge business">BUSINESS</span></div>
+        <div class="topic-row"><a href="article.html">I need to merge two domains</a><span class="badge business">BUSINESS</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Release notes: replaces the old "More resources" card grid.
+       For Developers is dropped (already in the header nav) and
+       Product description is dropped (no article behind it yet). -->
+  <div class="section">
+    <div class="section-label">Release notes</div>
+    <div class="release-list" id="release-list"></div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section">
+    <div class="section-label">FAQ</div>
+    <div class="faq-list" id="faq-list"></div>
+  </div>
+
+  <div class="else-section">
+    <div class="else-heading">Looking for something else?</div>
+    <div class="else-row">
+      <div class="else-card">
+        <p>Want to write a review for your favourite products?</p>
+        <a href="reviewer.html">Trustpilot for Reviewers →</a>
+      </div>
+      <div class="else-card">
+        <p>Want your business to grow with Trustpilot reviews?</p>
+        <a href="business.html">Trustpilot for Business →</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('logo-home').addEventListener('click', function () {
+      window.location.href = 'index.html';
+    });
+
+    var RELEASE_NOTES = [
+      {
+        title: "Trustpilot's April 2026 product launch",
+        summary: "New dashboard widgets, faster invitations, and AI-assisted reply suggestions.",
+        date: "April 2026"
+      },
+      {
+        title: "Upgrade to the new Trustpilot app for Shopify",
+        summary: "Sync orders and send review invitations automatically from your Shopify store.",
+        date: "March 2026"
+      }
+    ];
+
+    document.getElementById('release-list').innerHTML = RELEASE_NOTES.map(function (r) {
+      return '<div class="release-row">' +
+        '<div class="release-info"><a href="article.html">' + r.title + '</a><p>' + r.summary + '</p></div>' +
+        '<div class="release-date">' + r.date + '</div>' +
+      '</div>';
+    }).join('');
+
+    var FAQS = [
+      { q: "How do I personalize my business profile?", a: "<p>Navigate to Settings &gt; Public profile settings &gt; Profile page in Trustpilot Business to update your core details, logo, header image, and category settings.</p><p>Fill out the About your business, Company description, and Contact info sections, then toggle the dynamic preview and click Save and publish. You can read more in <a href=\"article.html\">this article</a>.</p>" },
+      { q: "How do I reply to reviewers?", a: "<p>To reply to service or product reviews, go to Manage reviews &gt; Service/Product reviews &gt; Inbox in Trustpilot Business, find the review, and click Reply.</p><p>Type your response into the field provided and click Post reply to publish it publicly under the review or on your product widgets. You can read more in <a href=\"article.html\">this article</a>.</p>" },
+      { q: "How do I report reviews?", a: "<p>Click \"Flag review\" on the review card and choose a reason for our team to investigate.</p>" },
+      { q: "When should I invite my clients?", a: "<p>Right after a purchase or service is completed, while the experience is still fresh.</p>" },
+      { q: "How can I customize my invitations?", a: "<p>Edit your invitation template's subject line, message, and branding in Invitation settings.</p>" },
+      { q: "What method should I use to invite my clients?", a: "<p>Choose email, an Invitation Link, or an API/CRM integration based on your workflow.</p>" },
+      { q: "Where do I display my trustboxes? Which one should I use?", a: "<p>Add a TrustBox to your homepage or checkout — the Mini or Carousel widgets suit most businesses.</p>" },
+      { q: "How do I get notified when I receive a new review?", a: "<p>Turn on review notifications in account settings to get an email each time you're reviewed.</p>" },
+      { q: "How do I create user access for my colleagues?", a: "<p>Add teammates under Users & Access and assign them a role with the right permissions.</p>" },
+      { q: "How do I send invitations in multiple languages?", a: "<p>Set a language per invitation template, or let Trustpilot auto-detect your customer's language.</p>" }
+    ];
+
+    document.getElementById('faq-list').innerHTML = FAQS.map(function (f, i) {
+      return '<div class="faq-item" id="faq-' + i + '">' +
+        '<button type="button" class="faq-question" data-idx="' + i + '">' + f.q + '<span class="plus"></span></button>' +
+        '<div class="faq-answer">' + f.a + '</div>' +
+      '</div>';
+    }).join('');
+
+    Array.prototype.slice.call(document.querySelectorAll('.faq-question')).forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        btn.closest('.faq-item').classList.toggle('open');
+      });
+    });
+  </script>
+
+  <div id="site-footer"></div>
+  <script src="footer.js"></script>
+</body>
+</html>

@@ -214,7 +214,7 @@ const HELP_CENTER_DATA = {
     topics: [
       {
         id: "biz-getting-started",
-        label: "Getting started",
+        label: "Getting started (Plans)",
         subtopics: [
           {
             id: "biz-choose-your-plan",
@@ -225,14 +225,6 @@ const HELP_CENTER_DATA = {
               { id: "biz-plus-plan-article", label: "Getting started with Trustpilot's Plus plan" },
               { id: "biz-free-plan-article", label: "Getting started with Trustpilot's Free plan" }
             ]
-          },
-          {
-            id: "biz-set-up-account",
-            label: "Set up your account",
-            articles: [
-              { id: "biz-customize-business-profile", label: "Customize your business profile" },
-              { id: "biz-claim-business-profile", label: "Claim your business profile" }
-            ]
           }
         ]
       },
@@ -240,6 +232,14 @@ const HELP_CENTER_DATA = {
         id: "biz-account-management-and-billing",
         label: "Account Management & Billing",
         subtopics: [
+          {
+            id: "biz-set-up-account",
+            label: "Set up your account",
+            articles: [
+              { id: "biz-customize-business-profile", label: "Customize your business profile" },
+              { id: "biz-claim-business-profile", label: "Claim your business profile" }
+            ]
+          },
           {
             id: "biz-manage-account",
             label: "Manage your account",
@@ -347,7 +347,7 @@ const HELP_CENTER_DATA = {
       },
       {
         id: "biz-respond-and-manage",
-        label: "Respond and Manage",
+        label: "Respond and Manage Reviews",
         subtopics: [
           {
             id: "biz-service-reviews",

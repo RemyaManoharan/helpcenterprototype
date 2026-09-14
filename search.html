@@ -64,6 +64,11 @@
     border-radius: 8px;
     padding: 0 16px;
   }
+  .search-bar-row .search-input-wrap .search-icon {
+    display: flex;
+    color: #605E56;
+    flex-shrink: 0;
+  }
   .search-bar-row input {
     flex: 1;
     border: none;
@@ -164,6 +169,7 @@
   }
   .tag-pill {
     display: inline-block;
+    font-family: "Trustpilot Sans", Arial, sans-serif;
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.04em;
@@ -189,7 +195,7 @@
     <nav>
       <a href="reviewer.html">Reviewer</a>
       <a href="business.html">Business</a>
-      <a href="#">Developers</a>
+      <a href="https://developers.trustpilot.com/">Developers</a>
       <a href="#">Contact Us</a>
     </nav>
    </div>
@@ -202,7 +208,12 @@
 
     <div class="search-bar-row">
       <div class="search-input-wrap">
-        <span>&#128269;</span>
+        <span class="search-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </span>
         <input id="search-input" type="search" placeholder="Search Trustpilot Help...">
       </div>
       <button id="search-btn">Search</button>
@@ -214,10 +225,6 @@
         <label class="filter-option"><input type="checkbox" id="audience-all" checked> All</label>
         <label class="filter-option"><input type="checkbox" id="audience-reviewer"> Reviewers</label>
         <label class="filter-option"><input type="checkbox" id="audience-business"> Businesses</label>
-
-        <h3>Content Type</h3>
-        <label class="filter-option"><input type="checkbox" class="type-checkbox" value="article"> Articles</label>
-        <label class="filter-option"><input type="checkbox" class="type-checkbox" value="guide"> Guides</label>
 
         <h3>Topic</h3>
         <div class="topic-filters" id="topic-filters"></div>
@@ -297,9 +304,6 @@
       topicFiltersEl.appendChild(label);
     });
 
-    document.querySelectorAll('.type-checkbox').forEach(function (cb) {
-      cb.addEventListener('change', render);
-    });
     sortSelect.addEventListener('change', render);
 
     function matchArticle(article, q) {
@@ -327,10 +331,6 @@
       return null;
     }
 
-    function currentTypeFilters() {
-      return Array.from(document.querySelectorAll('.type-checkbox:checked')).map(function (cb) { return cb.value; });
-    }
-
     function currentTopicFilters() {
       return Array.from(document.querySelectorAll('.topic-checkbox:checked')).map(function (cb) { return cb.value; });
     }
@@ -340,12 +340,10 @@
       breadcrumbQueryEl.textContent = q ? 'Search: "' + searchInput.value.trim() + '"' : 'All articles';
 
       var audienceFilter = currentAudienceFilter();
-      var typeFilters = currentTypeFilters();
       var topicFilters = currentTopicFilters();
 
       var results = HELP_CENTER_ARTICLES.filter(function (a) {
         if (audienceFilter && a.audience !== audienceFilter) return false;
-        if (typeFilters.length > 0 && typeFilters.indexOf(a.type) === -1) return false;
         if (topicFilters.length > 0 && topicFilters.indexOf(a.topic) === -1) return false;
         return matchArticle(a, q);
       });
@@ -377,7 +375,6 @@
           '<div class="result-meta">' +
             '<span class="tag-pill" style="background:' + tagStyle.bg + ';color:' + tagStyle.color + ';">' + a.tag + '</span>' +
             '<span>' + a.topic + (a.subtopic ? ' &rsaquo; ' + a.subtopic : '') + '</span>' +
-            '<span>&#9634; ' + (a.type === 'guide' ? 'Guide' : 'Article') + '</span>' +
           '</div>';
         card.addEventListener('click', function () { window.location.href = a.pageUrl; });
         resultsListEl.appendChild(card);
