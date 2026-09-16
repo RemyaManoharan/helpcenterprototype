@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Topic - Trustpilot Help Center</title>
+<title>FAQ - Trustpilot Help Center</title>
 <style>
   @font-face {
     font-display: swap;
@@ -46,6 +46,7 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: "Trustpilot Sans", Arial, sans-serif;
+    font-weight: 450;
     color: #2D2F29;
     background: #ffffff;
   }
@@ -75,219 +76,161 @@
   nav a { cursor: pointer; color: #1A1A1A; }
   nav a:hover { text-decoration: underline; }
 
-  .mini-search-strip {
-    background: #022A1C;
-    padding: 20px 40px;
-  }
-  .mini-search-bar {
-    max-width: 640px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: #ffffff;
-    border-radius: 8px;
-    padding: 0 8px 0 16px;
-    height: 48px;
-  }
-  .mini-search-bar input {
-    flex: 1;
-    border: none;
-    outline: none;
-    font-size: 14px;
-    font-family: inherit;
-    color: #2D2F29;
-    height: 100%;
-  }
-  .mini-search-bar input::placeholder { color: #8B8880; }
-  .mini-search-bar button {
-    width: 36px;
-    height: 36px;
-    flex-shrink: 0;
-    border: none;
-    border-radius: 6px;
-    background: #022A1C;
-    color: #ffffff;
-    font-size: 15px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .mini-search-bar button:hover { background: #04140F; }
-
   .page {
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 32px 40px 80px;
+    padding: 32px 40px 0;
   }
   .breadcrumb {
     font-size: 14px;
     color: #605E56;
-    margin-bottom: 36px;
+    margin-bottom: 24px;
   }
   .breadcrumb a { color: #04A672; }
   .breadcrumb a:hover { text-decoration: underline; }
-  .breadcrumb .current { color: #2D2F29; font-weight: 600; }
 
-  .topic-header-row {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-bottom: 6px;
+  .page-title { font-size: 32px; font-weight: 700; line-height: 1.2; }
+  .page-subtitle { font-size: 15px; color: #605E56; margin-top: 10px; max-width: 640px; }
+
+  .faq-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-top: 40px;
   }
-  h1.topic-title {
-    font-size: 32px;
+  .audience-col:first-child {
+    padding-right: 24px;
+    border-right: 1px solid #E5E5E5;
+  }
+  .audience-col:last-child {
+    padding-left: 24px;
+  }
+  .audience-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .audience-badge {
+    font-family: "Trustpilot Sans", Arial, sans-serif;
+    font-size: 13px;
     font-weight: 700;
-    line-height: 1.2;
-  }
-
-  .topic-switchers {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    flex-shrink: 0;
-  }
-
-  .topic-switcher {
-    position: relative;
-    flex-shrink: 0;
-  }
-  .topic-switcher-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    border: 1px solid #D9D6CE;
-    border-radius: 8px;
-    padding: 10px 14px;
-    font-size: 14px;
-    font-weight: 600;
-    color: #2D2F29;
-    background: #ffffff;
-    cursor: pointer;
-    font-family: inherit;
+    letter-spacing: 0.04em;
+    padding: 6px 14px;
     white-space: nowrap;
   }
-  .topic-switcher-btn:hover { border-color: #A39E97; }
-  .topic-switcher-btn svg { flex-shrink: 0; transition: transform 0.15s ease; }
-  .topic-switcher-btn.open svg { transform: rotate(180deg); }
+  .audience-badge.reviewer { color: #5A1B0C; background: #FFC2A6; }
+  .audience-badge.business { color: #33236A; background: #BFB9F1; }
 
-  .topic-switcher-menu {
-    position: absolute;
-    top: calc(100% + 6px);
-    right: 0;
-    min-width: 280px;
-    max-height: 360px;
-    overflow-y: auto;
-    background: #ffffff;
-    border: 1px solid #E5E5E5;
-    border-radius: 10px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-    padding: 8px;
-    z-index: 30;
-    display: none;
+  .topic-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 40px 0 14px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #DCD6D1;
   }
-  .topic-switcher-menu.open { display: block; }
-  .topic-switcher-item {
-    display: block;
+  .topic-header:first-of-type { margin-top: 0; }
+  .topic-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .topic-icon svg { width: 16px; height: 16px; }
+  .audience-col:first-child .topic-header { border-bottom-color: #FFC2A6; }
+  .audience-col:first-child .topic-icon { background: #FFE4D2; color: #5A1B0C; }
+  .audience-col:last-child .topic-header { border-bottom-color: #BFB9F1; }
+  .audience-col:last-child .topic-icon { background: #E4E1FB; color: #33236A; }
+  .topic-header-label {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #2D2F29;
+  }
+
+  .faq-list { margin-top: 4px; }
+  .faq-item { border-top: 1px solid #E5E5E5; }
+  .faq-item.first-in-topic { border-top: none; }
+  .faq-item.last-in-topic { border-bottom: 1px solid #E5E5E5; }
+  .faq-question {
     width: 100%;
-    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 0;
     background: none;
     border: none;
+    text-align: left;
     font-family: inherit;
     font-size: 14px;
+    font-weight: 575;
     color: #2D2F29;
-    padding: 10px 12px;
-    border-radius: 6px;
     cursor: pointer;
   }
-  .topic-switcher-item:hover { background: #F3F0EC; }
-  .topic-switcher-item.active { color: #04A672; font-weight: 700; background: #EAF7F0; }
-
-  .topic-switcher-subitem {
-    display: block;
-    width: 100%;
-    text-align: left;
-    background: none;
-    border: none;
-    font-family: inherit;
-    font-size: 13px;
-    color: #605E56;
-    padding: 8px 12px 8px 28px;
-    border-radius: 6px;
-    cursor: pointer;
+  .faq-question .plus {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
     position: relative;
   }
-  .topic-switcher-subitem::before {
-    content: "";
+  .faq-question .plus::before,
+  .faq-question .plus::after {
+    content: '';
     position: absolute;
-    left: 14px;
-    top: 50%;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #D9D6CE;
-    transform: translateY(-50%);
+    background: #2D2F29;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
   }
-  .topic-switcher-subitem:hover { background: #F3F0EC; color: #2D2F29; }
-
-  .topic-summary {
-    font-size: 14px;
-    color: #605E56;
-    margin-bottom: 28px;
-  }
-
-  hr.divider { border: none; border-top: 1px solid #E5E5E5; margin-bottom: 28px; }
-
-  .subtopic-section {
-    padding-top: 24px;
-    border-top: 1px solid #E5E5E5;
-  }
-  .subtopic-section:first-of-type {
-    padding-top: 0;
-    border-top: none;
-  }
-  .subtopic-section + .subtopic-section { margin-top: 0; }
-  .subtopic-heading {
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
-    font-size: 19px;
-    font-weight: 700;
-    margin-bottom: 16px;
-  }
-  .subtopic-count {
+  .faq-question .plus::before { width: 12px; height: 2px; }
+  .faq-question .plus::after { width: 2px; height: 12px; transition: transform 0.15s ease; }
+  .faq-item.open .faq-question .plus::after { transform: translate(-50%, -50%) scaleY(0); }
+  .faq-answer {
     font-size: 13px;
-    font-weight: 400;
-    color: #8B8880;
+    line-height: 1.5;
+    color: #605E56;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.15s ease;
   }
-  .article-grid {
+  .faq-item.open .faq-answer { max-height: 220px; }
+  .faq-answer p { padding: 0 28px 14px 0; }
+  .faq-answer a { color: #04A672; }
+  .faq-answer a:hover { text-decoration: underline; }
+
+  .else-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 56px 24px;
+  }
+  .else-heading { font-size: 22px; font-weight: 575; }
+  .else-row {
+    margin-top: 20px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 4px 32px;
-    margin-bottom: 8px;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
   }
-  .article-grid a {
-    font-size: 15px;
-    color: #2D2F29;
-    padding: 8px 0;
-    border-bottom: 1px solid transparent;
+  .else-card {
+    border: 1px solid #DCD6D1;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
   }
-  .article-grid a:hover { color: #04A672; text-decoration: underline; }
+  .else-card p { font-size: 14px; color: #605E56; }
+  .else-card a { font-size: 16px; font-weight: 575; color: #2D2F29; }
+  .else-card a:hover { text-decoration: underline; }
 
-  .empty-state {
-    font-size: 14px;
-    color: #8B8880;
-    padding: 20px 0 8px;
-  }
-
-  @media (max-width: 640px) {
-    .topic-header-row { flex-direction: column; align-items: stretch; }
-    .topic-switchers { flex-direction: column; align-items: stretch; }
-    .topic-switcher-menu { left: 0; right: 0; }
+  @media (max-width: 900px) {
+    .faq-columns { grid-template-columns: 1fr; gap: 8px; }
+    .audience-col:first-child { padding-right: 0; border-right: none; border-bottom: 1px solid #E5E5E5; padding-bottom: 24px; margin-bottom: 24px; }
+    .audience-col:last-child { padding-left: 0; }
+    .else-row { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -308,177 +251,194 @@
    </div>
   </header>
 
-  <div class="mini-search-strip">
-    <div class="mini-search-bar">
-      <input id="mini-search-input" type="search" placeholder="Search for help articles">
-      <button id="mini-search-btn" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="#ffffff" stroke-width="2"></circle><path d="M21 21L16 16" stroke="#ffffff" stroke-width="2" stroke-linecap="round"></path></svg></button>
-    </div>
-  </div>
-
   <div class="page">
-    <div class="breadcrumb" id="breadcrumb"></div>
+    <div class="breadcrumb">
+      <a href="index.html">Help Center</a> &nbsp;›&nbsp; <span>FAQ</span>
+    </div>
 
-    <div class="topic-header-row">
-      <h1 class="topic-title" id="topic-title">Loading topic…</h1>
+    <div class="page-title">Frequently asked questions</div>
+    <div class="page-subtitle">Quick answers to the questions we hear most from reviewers and businesses. No time to read a full article? Start here.</div>
 
-      <div class="topic-switchers">
-        <div class="topic-switcher" id="topic-switcher">
-          <button type="button" class="topic-switcher-btn" id="topic-switcher-btn">
-            Switch topic
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="#2D2F29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-          </button>
-          <div class="topic-switcher-menu" id="topic-switcher-menu"></div>
+    <div class="faq-columns">
+      <div class="audience-col">
+        <div class="audience-head">
+          <span class="audience-badge reviewer">REVIEWER</span>
         </div>
+        <div id="reviewer-faq"></div>
+      </div>
+      <div class="audience-col">
+        <div class="audience-head">
+          <span class="audience-badge business">BUSINESS</span>
+        </div>
+        <div id="business-faq"></div>
       </div>
     </div>
-
-    <div class="topic-summary" id="topic-summary"></div>
-
-    <hr class="divider">
-
-    <div id="topic-content"></div>
   </div>
 
-  <script src="data.js"></script>
+  <div class="else-section">
+    <div class="else-heading">Didn't find your answer?</div>
+    <div class="else-row">
+      <div class="else-card">
+        <p>Browse every article written for people who write reviews.</p>
+        <a href="reviewer.html">All reviewer articles →</a>
+      </div>
+      <div class="else-card">
+        <p>Browse every article written for businesses on Trustpilot.</p>
+        <a href="business.html">All business articles →</a>
+      </div>
+      <div class="else-card">
+        <p>Search the whole Help Center by keyword or topic.</p>
+        <a href="search.html">Search Help Center →</a>
+      </div>
+    </div>
+  </div>
+
   <script>
     document.getElementById('logo-home').addEventListener('click', function () {
       window.location.href = 'index.html';
     });
 
-    function submitMiniSearch() {
-      var q = document.getElementById('mini-search-input').value.trim();
-      window.location.href = 'search.html' + (q ? ('?q=' + encodeURIComponent(q)) : '');
-    }
-    document.getElementById('mini-search-btn').addEventListener('click', submitMiniSearch);
-    document.getElementById('mini-search-input').addEventListener('keydown', function (e) {
-      if (e.key === 'Enter') submitMiniSearch();
-    });
+    var ICONS = {
+      lock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"></rect><path d="M8 11V7a4 4 0 018 0v4"></path></svg>',
+      edit: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4 12.5-12.5z"></path></svg>',
+      support: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="3.5"></circle><path d="M4.9 4.9l3.8 3.8M15.3 15.3l3.8 3.8M19.1 4.9l-3.8 3.8M8.7 15.3l-3.8 3.8"></path></svg>',
+      link: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a3.5 3.5 0 005 0l3-3a3.5 3.5 0 00-5-5l-1 1"></path><path d="M14 10a3.5 3.5 0 00-5 0l-3 3a3.5 3.5 0 005 5l1-1"></path></svg>',
+      widget: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 9h18"></path><path d="M7 4v5"></path></svg>',
+      mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg>',
+      box: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8l-9-5-9 5 9 5 9-5z"></path><path d="M3 8v8l9 5 9-5V8"></path><path d="M12 13v8"></path></svg>',
+      send: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2L11 13"></path><path d="M22 2l-7 20-4-9-9-4 20-7z"></path></svg>',
+      star: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"></path></svg>'
+    };
 
-    var AUDIENCE_LABELS = { reviewer: 'Reviewer', business: 'Business' };
-
-    function getParams() {
-      var params = new URLSearchParams(window.location.search);
-      var audience = params.get('audience');
-      if (!HELP_CENTER_DATA[audience]) audience = 'reviewer';
-      var audienceData = HELP_CENTER_DATA[audience];
-      var topicId = params.get('topic');
-      var topic = audienceData.topics.find(function (t) { return t.id === topicId; });
-      if (!topic) topic = audienceData.topics[0];
-      return { audience: audience, audienceData: audienceData, topic: topic };
-    }
-
-    function countArticles(topic) {
-      var count = 0;
-      (topic.subtopics || []).forEach(function (s) { count += (s.articles || []).length; });
-      count += (topic.articles || []).length;
-      return count;
-    }
-
-    function escapeHtml(str) {
-      var div = document.createElement('div');
-      div.textContent = str;
-      return div.innerHTML;
-    }
-
-    function renderBreadcrumb(audience, audienceData, topic) {
-      var el = document.getElementById('breadcrumb');
-      el.innerHTML =
-        '<a href="index.html">Home</a> &nbsp;›&nbsp; ' +
-        '<a href="' + audienceData.pageUrl + '">' + AUDIENCE_LABELS[audience] + '</a> &nbsp;›&nbsp; ' +
-        '<span class="current">' + escapeHtml(topic.label) + '</span>';
-    }
-
-    function renderSwitcher(audience, audienceData, topic) {
-      var menu = document.getElementById('topic-switcher-menu');
-      var btn = document.getElementById('topic-switcher-btn');
-      var switcher = document.getElementById('topic-switcher');
-
-      menu.innerHTML = audienceData.topics.map(function (t) {
-        var isActive = t.id === topic.id;
-        var activeClass = isActive ? ' active' : '';
-        var item = '<button type="button" class="topic-switcher-item' + activeClass + '" data-topic-id="' + t.id + '">' + escapeHtml(t.label) + '</button>';
-
-        if (!isActive) return item;
-
-        var children = (t.subtopics || []).map(function (s) {
-          return '<button type="button" class="topic-switcher-subitem" data-scroll-target="section-' + escapeHtml(s.id) + '">' + escapeHtml(s.label) + '</button>';
-        }).join('');
-        if (t.articles && t.articles.length) {
-          children += '<button type="button" class="topic-switcher-subitem" data-scroll-target="section-general">General</button>';
-        }
-        return item + children;
-      }).join('');
-
-      Array.prototype.slice.call(menu.querySelectorAll('.topic-switcher-item')).forEach(function (item) {
-        item.addEventListener('click', function () {
-          window.location.href = 'topic.html?audience=' + audience + '&topic=' + item.getAttribute('data-topic-id');
-        });
-      });
-
-      Array.prototype.slice.call(menu.querySelectorAll('.topic-switcher-subitem')).forEach(function (subitem) {
-        subitem.addEventListener('click', function (e) {
-          e.stopPropagation();
-          var target = document.getElementById(subitem.getAttribute('data-scroll-target'));
-          menu.classList.remove('open');
-          btn.classList.remove('open');
-          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-      });
-
-      btn.addEventListener('click', function (e) {
-        e.stopPropagation();
-        var isOpen = menu.classList.toggle('open');
-        btn.classList.toggle('open', isOpen);
-      });
-      document.addEventListener('click', function (e) {
-        if (!switcher.contains(e.target)) {
-          menu.classList.remove('open');
-          btn.classList.remove('open');
-        }
-      });
-    }
-
-    function renderContent(topic) {
-      var sections = [];
-      (topic.subtopics || []).forEach(function (subtopic) {
-        sections.push(renderSection(subtopic.id, subtopic.label, subtopic.articles || []));
-      });
-      if (topic.articles && topic.articles.length) {
-        sections.push(renderSection('general', 'General', topic.articles));
+    var REVIEWER_TOPICS = [
+      {
+        topic: "Account and profile",
+        icon: "lock",
+        items: [
+          { q: "I forgot my password — how do I reset it?", a: "Go to the sign-in page and select \"Forgot password\", then enter the email address on your account. We'll send a reset link that's valid for 24 hours." },
+          { q: "I can't remember which email I signed up with — how do I recover my account?", a: "Try the email addresses you use most often on the login page first. If none of them work, contact our Support team with your name and a business you've reviewed so we can help locate the account." },
+          { q: "I'm seeing a \"login unknown\" error — what does that mean?", a: "This usually means the email you entered isn't linked to a Trustpilot account yet. Double-check for typos, or sign up for a new account if you're a first-time reviewer." },
+          { q: "How do I change the email address linked to my account?", a: "Sign in and go to your account settings, then update your email under personal details. You'll need to confirm the change from a link we send to your new address." },
+          { q: "How do I unsubscribe from Trustpilot emails?", a: "Select \"Unsubscribe\" at the bottom of any Trustpilot email, or turn off individual notification types from your email preferences in account settings." },
+          { q: "How do I edit or update my profile information?", a: "Open your profile from the account menu and select \"Edit profile\". You can update your name, photo, and username at any time." },
+          { q: "How do I verify my email or account?", a: "Check your inbox for a verification email from Trustpilot and select the confirmation link. If you can't find it, you can request a new one from your account settings." }
+        ]
+      },
+      {
+        topic: "Writing and editing reviews",
+        icon: "edit",
+        items: [
+          { q: "How do I write a review?", a: "Search for the business on Trustpilot, select \"Write a review\", and share your rating and experience. Reviews based on a genuine experience are usually published straight away." },
+          { q: "Can I edit a review after I've submitted it?", a: "Yes. Open the review from your profile and select \"Edit\". You can update the text or star rating at any time, and the edit date will show alongside it." },
+          { q: "How do I delete a review I've written?", a: "Open the review from your profile, select the menu icon, then \"Delete review\". This removes it permanently and can't be undone." }
+        ]
+      },
+      {
+        topic: "General and technical support",
+        icon: "support",
+        items: [
+          { q: "Why does my issue say \"Not a Trustpilot Issue\"?", a: "This means the problem relates to the business itself rather than to Trustpilot, for example an order or delivery issue. Contact the business directly, and mention it in your review if it affects your experience." },
+          { q: "I'm having a technical problem on the site — who do I contact?", a: "Use the chat button in the corner of any page to reach our support team, or get in touch through our Contact us page. Include a screenshot if you can." },
+          { q: "My review isn't showing up — what should I check first?", a: "New reviews can take a few minutes to appear. If it's still missing after that, check it hasn't been flagged for moderation, and confirm you're signed into the account you used to post it." }
+        ]
       }
-      document.getElementById('topic-content').innerHTML = sections.join('') ||
-        '<div class="empty-state">No articles are available for this topic yet.</div>';
+    ];
+
+    var BUSINESS_TOPICS = [
+      {
+        topic: "Account and domain management",
+        icon: "link",
+        items: [
+          { q: "How do I sign up for Trustpilot Business?", a: "Visit our Business page to compare plans and features, then create your account there. Sign-up takes a few minutes and you can start on the Free plan." },
+          { q: "How do I upgrade my account plan?", a: "Select \"Upgrade now\" at the bottom of your Trustpilot Business dashboard to compare plans. If you have an account manager, they can process the upgrade for you instead." },
+          { q: "I've lost access to my admin login — how do I get back in?", a: "Follow our account-recovery steps to verify you're linked to the business. We confirm ownership before restoring access, including cases where the previous admin has left the company." },
+          { q: "Can I merge two business domains into one profile?", a: "Yes. Submit a domain merge request with both domain names and proof that you manage them, and our team will combine the reviews and history under a single profile." },
+          { q: "How do I personalize my profile?", a: "Go to Settings › Public profile settings › Profile page in Trustpilot Business to update your logo, header image, and company description. Toggle the preview to check your changes, then select Save and publish." },
+          { q: "How do I get notified when I receive a new review?", a: "Turn on review notifications in your account settings to get an email every time you're reviewed." },
+          { q: "How do I create user access for my colleagues?", a: "Add teammates under Users and access, then assign each one a role with the right permissions." }
+        ]
+      },
+      {
+        topic: "Collect reviews and invitations",
+        icon: "send",
+        items: [
+          { q: "When should I invite my clients?", a: "Right after a purchase or service is completed, while the experience is still fresh in their mind." },
+          { q: "How can I customize my invitations?", a: "Edit your invitation template's subject line, message, and branding under Invitation settings." },
+          { q: "What method should I use to invite my clients?", a: "Choose email, an Invitation Link, or an API/CRM integration, based on whichever fits your existing workflow best." },
+          { q: "How do I invite my past clients?", a: "Import your past customers as a CSV file or connect your CRM, then send a one-off bulk invitation to everyone on the list." },
+          { q: "How do I send invitations in multiple languages?", a: "Set a language per invitation template, or let Trustpilot auto-detect your customer's language." }
+        ]
+      },
+      {
+        topic: "Manage and respond to reviews",
+        icon: "star",
+        items: [
+          { q: "How do I reply to reviewers?", a: "Go to Manage reviews › Service/Product reviews › Inbox, open the review, and select Reply. Type your response and select Post reply to publish it under the review." },
+          { q: "How do I report reviews?", a: "Select \"Flag review\" on the review card and choose a reason. Our team will investigate and get back to you." },
+          { q: "How do I tag my reviews?", a: "Open a review from your inbox and add a tag from the tag menu — useful for grouping reviews by product, location, or team." }
+        ]
+      },
+      {
+        topic: "TrustBox widgets",
+        icon: "widget",
+        items: [
+          { q: "How do I add a TrustBox widget to my website?", a: "Pick a widget under Share and promote › Website widgets, then copy the bootstrap script and the widget code into your site. Most page builders let you paste this straight into an HTML block." },
+          { q: "Where do I display my TrustBoxes? Which one should I use?", a: "Add a TrustBox to your homepage or checkout page — the Mini or Carousel widgets suit most businesses." },
+          { q: "Can I change my widget's language?", a: "Yes, set it under \"Customize\" on the widget, and turn on the option to only show reviews written in that language." },
+          { q: "Will a TrustBox widget slow down my site or affect SEO?", a: "Widgets are built to load after the rest of your page, so the impact is minimal. If your page already loads slowly for other reasons, that tends to affect indexing more than the widget does." }
+        ]
+      },
+      {
+        topic: "Automatic Feedback Service (AFS)",
+        icon: "mail",
+        items: [
+          { q: "Where do I find my unique Trustpilot email address for AFS?", a: "It's in Trustpilot Business under your AFS settings. Copy it into the BCC field of your order-confirmation emails to trigger invitations automatically." },
+          { q: "Can I customize the invitation emails sent through AFS?", a: "Yes, you can set the sender name, language, and timing in the basic setup. For more control, such as personalizing with order details, you can add a structured data snippet." },
+          { q: "How do I stop sending review invitations through AFS?", a: "Remove your unique Trustpilot email address from whatever platform is sending it, such as your CRM or ecommerce tool. Anything already queued may still go out." }
+        ]
+      },
+      {
+        topic: "Product reviews",
+        icon: "box",
+        items: [
+          { q: "Where can I see my product reviews?", a: "Go to Manage reviews › Product reviews › Inbox in Trustpilot Business to view and manage all the reviews left on your products." },
+          { q: "Can I set up reminders for product review invitations?", a: "Yes. Turn on invitation reminders when you send your first invitation, and we'll automatically follow up with customers who haven't left a review yet." },
+          { q: "Are there SEO benefits to product reviews?", a: "Yes. Our Product Review TrustBox widgets let search engines crawl your review content, which can help boost the organic ranking of your product pages." },
+          { q: "Can product reviews improve my ranking in Google Shopping?", a: "Yes, as long as you send matching product feeds to both Trustpilot and your Google Merchant Center account, and meet Google's minimum review requirements for star ratings to appear." }
+        ]
+      }
+    ];
+
+    function renderColumn(containerId, topics) {
+      var container = document.getElementById(containerId);
+      var html = '';
+      topics.forEach(function (group) {
+        html += '<div class="topic-header">' +
+          '<span class="topic-icon">' + (ICONS[group.icon] || '') + '</span>' +
+          '<span class="topic-header-label">' + group.topic + '</span>' +
+        '</div><div class="faq-list">';
+        group.items.forEach(function (item, i) {
+          var isFirst = i === 0;
+          var isLast = i === group.items.length - 1;
+          var cls = (isFirst ? ' first-in-topic' : '') + (isLast ? ' last-in-topic' : '');
+          html += '<div class="faq-item' + cls + '">' +
+            '<button type="button" class="faq-question">' + item.q + '<span class="plus"></span></button>' +
+            '<div class="faq-answer"><p>' + item.a + '</p></div>' +
+          '</div>';
+        });
+        html += '</div>';
+      });
+      container.innerHTML = html;
     }
 
-    function renderSection(id, label, articles) {
-      var countLabel = articles.length === 1 ? '1 article' : articles.length + ' articles';
-      var links = articles.map(function (a) {
-        return '<a href="article.html">' + escapeHtml(a.label) + '</a>';
-      }).join('');
-      return '' +
-        '<div class="subtopic-section" id="section-' + escapeHtml(id) + '" data-subtopic-id="' + escapeHtml(id) + '">' +
-          '<div class="subtopic-heading">' + escapeHtml(label) + ' <span class="subtopic-count">' + countLabel + '</span></div>' +
-          '<div class="article-grid">' + (links || '<span class="empty-state" style="padding:0;">No articles yet.</span>') + '</div>' +
-        '</div>';
-    }
+    renderColumn('reviewer-faq', REVIEWER_TOPICS);
+    renderColumn('business-faq', BUSINESS_TOPICS);
 
-    function init() {
-      var ctx = getParams();
-      document.title = ctx.topic.label + ' - Trustpilot Help Center';
-      document.getElementById('topic-title').textContent = ctx.topic.label;
-      var subtopicCount = (ctx.topic.subtopics || []).length;
-      var articleCount = countArticles(ctx.topic);
-      var subtopicLabel = subtopicCount === 1 ? '1 subtopic' : subtopicCount + ' subtopics';
-      var articleLabel = articleCount === 1 ? '1 article' : articleCount + ' articles';
-      document.getElementById('topic-summary').textContent = subtopicCount > 0
-        ? (subtopicLabel + ' · ' + articleLabel)
-        : articleLabel;
-      renderBreadcrumb(ctx.audience, ctx.audienceData, ctx.topic);
-      renderSwitcher(ctx.audience, ctx.audienceData, ctx.topic);
-      renderContent(ctx.topic);
-    }
-
-    init();
+    Array.prototype.slice.call(document.querySelectorAll('.faq-question')).forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        btn.closest('.faq-item').classList.toggle('open');
+      });
+    });
   </script>
 
   <div id="site-footer"></div>

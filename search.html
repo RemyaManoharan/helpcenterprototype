@@ -33,8 +33,8 @@
     cursor: pointer;
   }
   .logo svg { width: 22px; height: 22px; }
-  nav { display: flex; align-items: center; gap: 28px; font-size: 14px; }
-  nav a { cursor: pointer; }
+  nav { display: flex; align-items: center; gap: 28px; font-size: 16px; font-weight: 400; }
+  nav a { cursor: pointer; color: #1A1A1A; }
   nav a:hover { text-decoration: underline; }
 
   .page {
@@ -196,7 +196,7 @@
       <a href="reviewer.html">Reviewer</a>
       <a href="business.html">Business</a>
       <a href="https://developers.trustpilot.com/">Developers</a>
-      <a href="#">Contact Us</a>
+      <a href="contact-us.html">Contact Us</a>
     </nav>
    </div>
   </header>
@@ -423,14 +423,18 @@
       }
     }
 
+    function isLaptopScreen() {
+      return window.innerWidth < 1600;
+    }
+
     function openPanel() {
       var wrap = document.getElementById('tp-chat-fab');
       var panel = document.getElementById('tp-chat-panel');
       if (wrap) wrap.style.display = 'none';
       if (!panel) return;
-      var headerHeight = getHeaderHeight() + 1;
+      var headerHeight = isLaptopScreen() ? 2 : getHeaderHeight();
       panel.style.top = headerHeight + 'px';
-      panel.style.height = 'calc(100vh - ' + headerHeight + 'px)';
+      panel.style.height = 'calc(100vh - ' + headerHeight + 'px + 2px)';
       panel.style.display = 'flex';
     }
 
