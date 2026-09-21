@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trustpilot's April 2026 product launch - Trustpilot Help Center</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Trustpilot Sans", Arial, sans-serif;
+    color: #2D2F29;
+    background: #ffffff;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  header {
+    border-bottom: 1px solid #E5E5E5;
+  }
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .logo svg { width: 22px; height: 22px; }
+  nav { display: flex; align-items: center; gap: 28px; font-size: 14px; }
+  nav a { cursor: pointer; }
+  nav a:hover { text-decoration: underline; }
+
+  /* Small search bar strip */
+  .mini-search-strip {
+    background: #022A1C;
+    padding: 20px 40px;
+  }
+  .mini-search-bar {
+    max-width: 640px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 0 8px 0 16px;
+    height: 48px;
+  }
+  .mini-search-bar input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    font-family: inherit;
+    color: #2D2F29;
+    height: 100%;
+  }
+  .mini-search-bar input::placeholder { color: #8B8880; }
+  .mini-search-bar button {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    border: none;
+    border-radius: 6px;
+    background: #022A1C;
+    color: #ffffff;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .mini-search-bar button:hover { background: #04140F; }
+
+  .page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 40px 80px;
+  }
+  .breadcrumb {
+    font-size: 14px;
+    color: #605E56;
+    margin-bottom: 20px;
+  }
+  .breadcrumb a { color: #04A672; }
+  .breadcrumb a:hover { text-decoration: underline; }
+  .breadcrumb .current { color: #2D2F29; font-weight: 600; }
+
+  .tag-pill {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 20px;
+    background: #D9FA9E;
+    color: #1F3D06;
+    margin-bottom: 16px;
+  }
+
+  h1.article-title {
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    max-width: 720px;
+  }
+  .article-subtitle {
+    font-size: 16px;
+    color: #605E56;
+    line-height: 1.5;
+    max-width: 700px;
+    margin-bottom: 20px;
+  }
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: #605E56;
+    margin-bottom: 24px;
+  }
+
+  hr.divider { border: none; border-top: 1px solid #E5E5E5; margin-bottom: 32px; }
+
+  .layout {
+    display: flex;
+    gap: 48px;
+    align-items: flex-start;
+  }
+
+  main.content {
+    flex: 1;
+    min-width: 0;
+    max-width: 720px;
+  }
+
+  .content h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 36px 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .content h2:first-child { margin-top: 0; }
+  .content h3 {
+    font-size: 17px;
+    font-weight: 700;
+    margin: 26px 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .content h3:first-of-type { margin-top: 18px; }
+
+  .heading-anchor {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    color: #A39E97;
+    transition: color .15s ease;
+  }
+  .heading-anchor:hover { color: #04A672; }
+  .heading-anchor svg { width: 18px; height: 18px; }
+  .heading-anchor .icon-check { display: none; }
+  .heading-anchor[data-copied="true"] .icon-link { display: none; }
+  .heading-anchor[data-copied="true"] .icon-check { display: inline-flex; }
+  .heading-anchor[data-copied="true"] { color: #04A672; opacity: 1; }
+
+  .content p {
+    font-size: 15px;
+    line-height: 1.65;
+    margin-bottom: 16px;
+  }
+  .content ul {
+    list-style: disc;
+    padding-left: 22px;
+    margin-bottom: 20px;
+  }
+  .content li {
+    font-size: 15px;
+    line-height: 1.65;
+    margin-bottom: 10px;
+  }
+  .content a.inline-link { color: #04A672; }
+  .content a.inline-link:hover { text-decoration: underline; }
+
+  .plan-note {
+    font-size: 13px;
+    font-weight: 600;
+    color: #605E56;
+    margin: -6px 0 20px;
+  }
+
+  .plan-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 24px;
+    font-size: 14px;
+  }
+  .plan-table th, .plan-table td {
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid #E5E5E5;
+    line-height: 1.5;
+  }
+  .plan-table th {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #605E56;
+    background: #F9F8F5;
+  }
+  .plan-table td:first-child { font-weight: 700; white-space: nowrap; }
+
+  .callout {
+    display: flex;
+    gap: 14px;
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin: 20px 0 28px;
+  }
+  .callout-icon {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+  }
+  .callout-tip { background: #E4F5A0; }
+  .callout-tip .callout-icon { background: #C8E85E; }
+  .callout-rule { background: #DCEAE3; }
+  .callout-rule .callout-icon { background: #B7D2C4; }
+  .callout-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .callout-text { font-size: 14px; line-height: 1.55; color: #2D2F29; }
+
+  .next-step-banner {
+    background: #022A1C;
+    color: #ffffff;
+    border-radius: 16px;
+    padding: 32px 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-top: 40px;
+  }
+  .next-step-title { font-size: 20px; font-weight: 700; }
+  .next-step-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .next-step-row span { font-size: 14px; color: #A9C9BC; }
+  .next-step-banner button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    border-radius: 24px;
+    padding: 12px 22px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    white-space: nowrap;
+  }
+  .btn-chat-ai {
+    background: #04DA8D;
+    color: #022A1C;
+  }
+  .btn-chat-ai:hover { background: #03c37f; }
+
+  aside.sidebar {
+    width: 280px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .toc-card {
+    border: 1px solid #E5E5E5;
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .toc-heading {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #605E56;
+    margin-bottom: 14px;
+  }
+  .toc-card a {
+    display: block;
+    font-size: 14px;
+    color: #2D2F29;
+    padding: 7px 0;
+  }
+  .toc-card a.active { color: #04A672; font-weight: 600; }
+  .toc-card a:hover { color: #04A672; }
+  .toc-card a.toc-sublink {
+    padding-left: 14px;
+    font-size: 13px;
+    color: #605E56;
+  }
+  .toc-sublist {
+    display: none;
+    flex-direction: column;
+  }
+  .toc-sublist.expanded {
+    display: flex;
+  }
+
+  .related-card {
+    border-top: 1px solid #E5E5E5;
+    padding-top: 20px;
+  }
+  .related-heading {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #605E56;
+    margin-bottom: 14px;
+  }
+  .related-card a {
+    display: block;
+    font-size: 15px;
+    color: #2D2F29;
+    padding: 9px 0;
+  }
+  .related-card a:hover { color: #04A672; text-decoration: underline; }
+
+  @media (max-width: 860px) {
+    .layout { flex-direction: column; }
+    aside.sidebar { width: 100%; order: -1; }
+  }
+</style>
+</head>
+<body>
+
+  <header>
+   <div class="header-inner">
+    <div class="logo" id="logo-home">
+      <svg viewBox="0 0 35.4453 33.3861" style="width:28px;height:26px" aria-hidden="true"><path fill="#04DA8D" d="M35.4453 12.7592H21.91L17.7292 0L13.5353 12.7592L0 12.7462L10.9615 20.6398L6.76765 33.3861L17.7292 25.5054L28.6776 33.3861L24.4968 20.6398L35.4453 12.7592Z"></path><path fill="#022A1C" d="M25.4375 23.5255L24.4968 20.6398L17.7292 25.5054L25.4375 23.5255Z"></path></svg>
+      <svg viewBox="0 0 109.145 23.2408" style="width:85px;height:18px" aria-hidden="true"><path fill="#2D2F29" d="M0.0130658 0H14.9986V2.76923H9.10628V18.3364H5.86617V2.76923H0V0H0.0130658ZM14.3584 5.05967H17.1282V7.62185H17.1804C17.2719 7.25952 17.4417 6.91014 17.69 6.57369C17.9382 6.23724 18.2387 5.91373 18.5915 5.64198C18.9442 5.3573 19.3362 5.13731 19.7673 4.95615C20.1984 4.78792 20.6427 4.69734 21.0869 4.69734C21.4266 4.69734 21.6748 4.71028 21.8054 4.72322C21.9361 4.73616 22.0667 4.76204 22.2104 4.77498V7.59597C22.0014 7.55715 21.7924 7.53127 21.5703 7.50539C21.3482 7.47951 21.1391 7.46657 20.9301 7.46657C20.4336 7.46657 19.9633 7.57009 19.5191 7.7642C19.0749 7.9583 18.696 8.25593 18.3693 8.6312C18.0427 9.01941 17.7814 9.48526 17.5855 10.0546C17.3895 10.624 17.298 11.271 17.298 12.0086V18.3235H14.3453V5.05967H14.3584ZM35.785 18.3364H32.8845V16.486H32.8323C32.4665 17.1589 31.9308 17.6894 31.2122 18.0906C30.4936 18.4917 29.762 18.6988 29.0173 18.6988C27.2535 18.6988 25.9732 18.2717 25.1893 17.4047C24.4054 16.5377 24.0134 15.2308 24.0134 13.4838V5.05967H26.9661V13.1991C26.9661 14.3638 27.1882 15.1919 27.6455 15.6707C28.0897 16.1495 28.7299 16.3954 29.5399 16.3954C30.167 16.3954 30.6765 16.3048 31.0946 16.1107C31.5127 15.9166 31.8524 15.6707 32.1006 15.3472C32.3619 15.0367 32.5448 14.6485 32.6624 14.2085C32.78 13.7685 32.8323 13.2897 32.8323 12.7721V5.07261H35.785V18.3364ZM40.815 14.0791C40.9064 14.9331 41.233 15.5284 41.7948 15.8778C42.3697 16.2142 43.0491 16.3954 43.846 16.3954C44.1204 16.3954 44.434 16.3695 44.7867 16.3307C45.1395 16.2919 45.4792 16.2013 45.7797 16.0848C46.0932 15.9684 46.3415 15.7872 46.5505 15.5543C46.7465 15.3214 46.8379 15.0237 46.8249 14.6485C46.8118 14.2732 46.6681 13.9626 46.4068 13.7297C46.1455 13.4838 45.8189 13.3027 45.4138 13.1474C45.0088 13.005 44.5515 12.8756 44.0289 12.7721C43.5063 12.6686 42.9838 12.5521 42.4481 12.4357C41.8994 12.3192 41.3637 12.1639 40.8542 11.9957C40.3446 11.8275 39.8874 11.5945 39.4823 11.2969C39.0773 11.0122 38.7507 10.637 38.5155 10.184C38.2673 9.73113 38.1497 9.17469 38.1497 8.5018C38.1497 7.77714 38.3326 7.18188 38.6854 6.69015C39.0381 6.19842 39.4954 5.81021 40.0311 5.51258C40.5798 5.21495 41.1808 5.00791 41.8471 4.8785C42.5134 4.76204 43.1536 4.69734 43.7546 4.69734C44.447 4.69734 45.1133 4.77498 45.7405 4.91733C46.3676 5.05967 46.9424 5.2926 47.452 5.62904C47.9615 5.95255 48.3796 6.37958 48.7193 6.89719C49.059 7.41481 49.268 8.04889 49.3595 8.78648H46.2761C46.1324 8.08771 45.8189 7.60891 45.3093 7.37599C44.7998 7.13012 44.2119 7.01366 43.5586 7.01366C43.3496 7.01366 43.1013 7.0266 42.8139 7.06542C42.5265 7.10424 42.2652 7.16894 42.0039 7.25952C41.7556 7.35011 41.5466 7.49245 41.3637 7.67361C41.1939 7.85478 41.1024 8.08771 41.1024 8.38533C41.1024 8.74766 41.233 9.03235 41.4813 9.25234C41.7295 9.47232 42.0561 9.65349 42.4611 9.80877C42.8662 9.95111 43.3234 10.0805 43.846 10.184C44.3686 10.2876 44.9043 10.404 45.453 10.5205C45.9887 10.637 46.5113 10.7922 47.0339 10.9605C47.5565 11.1287 48.0138 11.3616 48.4188 11.6592C48.8238 11.9569 49.1504 12.3192 49.3987 12.7592C49.6469 13.1991 49.7775 13.7556 49.7775 14.4026C49.7775 15.1919 49.5946 15.8519 49.2288 16.4083C48.863 16.9518 48.3926 17.4047 47.8178 17.7412C47.2429 18.0776 46.5897 18.3364 45.8842 18.4917C45.1787 18.647 44.4732 18.7247 43.7807 18.7247C42.9315 18.7247 42.1476 18.6341 41.429 18.44C40.7104 18.2459 40.0833 17.9612 39.5607 17.5859C39.0381 17.1977 38.6201 16.7189 38.3196 16.1495C38.0191 15.5802 37.8623 14.8943 37.8362 14.105H40.815V14.0791ZM50.5614 5.05967H52.7955V1.07405H55.7482V5.05967H58.4135V7.24659H55.7482V14.3379C55.7482 14.6485 55.7613 14.9073 55.7874 15.1402C55.8135 15.3602 55.8789 15.5543 55.9703 15.7096C56.0618 15.8648 56.2055 15.9813 56.4015 16.0589C56.5974 16.1366 56.8457 16.1754 57.1854 16.1754C57.3944 16.1754 57.6034 16.1754 57.8125 16.1625C58.0215 16.1495 58.2306 16.1237 58.4396 16.0719V18.3364C58.113 18.3753 57.7864 18.4011 57.4859 18.44C57.1723 18.4788 56.8587 18.4917 56.5321 18.4917C55.7482 18.4917 55.1211 18.4141 54.6508 18.2717C54.1804 18.1294 53.8015 17.9094 53.5402 17.6247C53.2659 17.34 53.096 16.9907 52.9915 16.5636C52.9001 16.1366 52.8347 15.6449 52.8217 15.1014V7.27247H50.5876V5.05967H50.5614ZM60.5039 5.05967H63.2998V6.85838H63.352C63.7701 6.08196 64.345 5.53846 65.0897 5.20201C65.8344 4.86556 66.6313 4.69734 67.5067 4.69734C68.565 4.69734 69.4795 4.8785 70.2634 5.25377C71.0473 5.6161 71.7006 6.12078 72.2232 6.76779C72.7458 7.41481 73.1246 8.16535 73.3859 9.01941C73.6472 9.87347 73.7779 10.7922 73.7779 11.7628C73.7779 12.6556 73.6603 13.5226 73.4251 14.3508C73.19 15.1919 72.8372 15.9295 72.3669 16.5766C71.8965 17.2236 71.2955 17.7283 70.5639 18.1165C69.8323 18.5047 68.983 18.6988 67.9901 18.6988C67.559 18.6988 67.1278 18.66 66.6967 18.5823C66.2655 18.5047 65.8474 18.3753 65.4555 18.207C65.0635 18.0388 64.6847 17.8188 64.358 17.5471C64.0184 17.2753 63.744 16.9648 63.5088 16.6154H63.4566V23.2408H60.5039V5.05967V5.05967ZM70.8252 11.711C70.8252 11.1157 70.7468 10.5334 70.59 9.96405C70.4333 9.39468 70.1981 8.90295 69.8845 8.46298C69.571 8.023 69.179 7.67361 68.7217 7.41481C68.2514 7.156 67.7157 7.01366 67.1147 7.01366C65.8736 7.01366 64.9329 7.44069 64.3058 8.29475C63.6787 9.14881 63.3651 10.2876 63.3651 11.711C63.3651 12.3839 63.4435 13.005 63.6133 13.5744C63.7832 14.1438 64.0184 14.6355 64.358 15.0496C64.6847 15.4637 65.0766 15.7872 65.5339 16.0201C65.9912 16.266 66.5268 16.3825 67.1278 16.3825C67.8072 16.3825 68.369 16.2401 68.8393 15.9684C69.3097 15.6966 69.6885 15.3343 69.989 14.9073C70.2895 14.4673 70.5116 13.9756 70.6423 13.4191C70.7599 12.8627 70.8252 12.2933 70.8252 11.711ZM76.0381 0H78.9908V2.76923H76.0381V0ZM76.0381 5.05967H78.9908V18.3364H76.0381V5.05967ZM81.6299 0H84.5826V18.3364H81.6299V0ZM93.6366 18.6988C92.5653 18.6988 91.6116 18.5176 90.7754 18.1682C89.9393 17.8188 89.2337 17.3271 88.6458 16.7189C88.071 16.0978 87.6268 15.3602 87.3263 14.5061C87.0258 13.652 86.869 12.7074 86.869 11.6851C86.869 10.6758 87.0258 9.74407 87.3263 8.89001C87.6268 8.03595 88.071 7.29835 88.6458 6.67721C89.2207 6.05607 89.9393 5.57728 90.7754 5.22789C91.6116 4.8785 92.5653 4.69734 93.6366 4.69734C94.708 4.69734 95.6617 4.8785 96.4979 5.22789C97.334 5.57728 98.0395 6.06901 98.6275 6.67721C99.2023 7.29835 99.6465 8.03595 99.947 8.89001C100.248 9.74407 100.404 10.6758 100.404 11.6851C100.404 12.7074 100.248 13.652 99.947 14.5061C99.6465 15.3602 99.2023 16.0978 98.6275 16.7189C98.0526 17.34 97.334 17.8188 96.4979 18.1682C95.6617 18.5176 94.708 18.6988 93.6366 18.6988ZM93.6366 16.3825C94.2899 16.3825 94.8648 16.2401 95.3482 15.9684C95.8316 15.6966 96.2235 15.3343 96.5371 14.8943C96.8506 14.4543 97.0727 13.9497 97.2295 13.3932C97.3732 12.8368 97.4516 12.2674 97.4516 11.6851C97.4516 11.1157 97.3732 10.5593 97.2295 9.98993C97.0858 9.42056 96.8506 8.92883 96.5371 8.48886C96.2235 8.04888 95.8316 7.6995 95.3482 7.42775C94.8648 7.156 94.2899 7.01366 93.6366 7.01366C92.9834 7.01366 92.4085 7.156 91.9251 7.42775C91.4417 7.6995 91.0498 8.06182 90.7362 8.48886C90.4227 8.92883 90.2005 9.42056 90.0438 9.98993C89.9001 10.5593 89.8217 11.1157 89.8217 11.6851C89.8217 12.2674 89.9001 12.8368 90.0438 13.3932C90.1875 13.9497 90.4227 14.4543 90.7362 14.8943C91.0498 15.3343 91.4417 15.6966 91.9251 15.9684C92.4085 16.2531 92.9834 16.3825 93.6366 16.3825ZM101.267 5.05967H103.501V1.07405H106.453V5.05967H109.119V7.24659H106.453V14.3379C106.453 14.6485 106.466 14.9073 106.493 15.1402C106.519 15.3602 106.584 15.5543 106.675 15.7096C106.767 15.8648 106.911 15.9813 107.107 16.0589C107.303 16.1366 107.551 16.1754 107.891 16.1754C108.1 16.1754 108.309 16.1754 108.518 16.1625C108.727 16.1495 108.936 16.1237 109.145 16.0719V18.3364C108.818 18.3753 108.492 18.4011 108.191 18.44C107.877 18.4788 107.564 18.4917 107.237 18.4917C106.453 18.4917 105.826 18.4141 105.356 18.2717C104.886 18.1294 104.507 17.9094 104.245 17.6247C103.971 17.34 103.801 16.9907 103.697 16.5636C103.605 16.1366 103.54 15.6449 103.527 15.1014V7.27247H101.293V5.05967H101.267Z"></path></svg>
+    </div>
+    <nav>
+      <a href="reviewer.html">Reviewer</a>
+      <a href="business.html">Business</a>
+      <a href="https://developers.trustpilot.com/">Developers</a>
+      <a href="#">Contact Us</a>
+    </nav>
+   </div>
+  </header>
+
+  <div class="mini-search-strip">
+    <div class="mini-search-bar">
+      <input id="mini-search-input" type="search" placeholder="Search for help articles">
+      <button id="mini-search-btn" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="#ffffff" stroke-width="2"></circle><path d="M21 21L16 16" stroke="#ffffff" stroke-width="2" stroke-linecap="round"></path></svg></button>
+    </div>
+  </div>
+
+  <div class="page">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> &nbsp;›&nbsp; <span class="current">Release notes</span>
+    </div>
+
+    <span class="tag-pill">Release notes</span>
+
+    <h1 class="article-title">Trustpilot's April 2026 product launch</h1>
+    <p class="article-subtitle">Our April 2026 launch introduces four new features and enhancements to existing tools to help your business collect more reviews, gain deeper insights, and stay visible in AI-powered search.</p>
+    <div class="article-meta">
+      <span>&#128337; 5 min read</span>
+      <span>&middot;</span>
+      <span>Published April 2026</span>
+    </div>
+
+    <hr class="divider">
+
+    <div class="layout">
+      <main class="content">
+        <p>Our latest update is here, and it's built around one big idea: helping your business stay trusted and visible in a world where AI is changing how people discover and choose products and services. From brand-new tools that show how your reviews are being cited in AI platforms, to smarter ways of collecting and acting on customer feedback, this release is packed with updates designed to help you do more with every review.</p>
+
+        <h2 id="new-features"><a class="heading-anchor" href="#new-features" data-anchor-id="new-features" aria-label="Copy link to New features"><svg class="icon-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg><svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></a>New features</h2>
+
+        <h3 id="ai-search-analytics"><a class="heading-anchor" href="#ai-search-analytics" data-anchor-id="ai-search-analytics" aria-label="Copy link to AI search analytics"><svg class="icon-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg><svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></a>AI search analytics</h3>
+        <p>AI search analytics gives you a real-time view of how often your Trustpilot profile page is being cited in answers on major AI platforms, including ChatGPT, Claude, and Perplexity. The data is backfilled to November 2025, so you can start spotting trends straight away.</p>
+        <p class="plan-note">Plan availability: Plus, Premium, and Enterprise. Explorer access is available on Premium and above. Custom dashboard integration is available on Enterprise.</p>
+
+        <h3 id="custom-dashboards"><a class="heading-anchor" href="#custom-dashboards" data-anchor-id="custom-dashboards" aria-label="Copy link to Custom dashboards"><svg class="icon-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg><svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></a>Custom dashboards</h3>
+        <p>Custom dashboards let you build your own analytics views by combining any Explorer cards, charts, or data grids into a single report page. You can share dashboards with colleagues, adjust date ranges, export charts, and choose from preset dashboards organized by theme or role.</p>
+        <p class="plan-note">Plan availability: Enterprise.</p>
+
+        <h3 id="invitation-optimizer"><a class="heading-anchor" href="#invitation-optimizer" data-anchor-id="invitation-optimizer" aria-label="Copy link to Invitation optimizer"><svg class="icon-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg><svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></a>Invitation optimizer</h3>
+        <p>Invitation optimizer is an A/B testing tool that helps you get more out of your review invitation process. You can test two variables, send delay and invitation templates, and get data-backed recommendations to help you improve your invitation conversion rate over time.</p>
+        <p class="plan-note">Plan availability: Enterprise.</p>
+
+        <h3 id="in-app-review-collector"><a class="heading-anchor" href="#in-app-review-collector" data-anchor-id="in-app-review-collector" aria-label="Copy link to In-app review collector"><svg class="icon-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg><svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></a>In-app review collector</h3>
+        <p>The In-app review collector lets you collect reviews directly within your own website or app, without sending a follow-up email. You can trigger the widget at any point in the customer journey, customize its appearance, and install multiple collectors across different touchpoints. Because customer details are passed to us securely, consumers can leave reviews without needing to sign in.</p>
+        <p class="plan-note">Plan availability: Plus, Premium, and Enterprise.</p>
+
+        <h2 id="enhancements"><a class="heading-anchor" href="#enhancements" data-anchor-id="enhancements" aria-label="Copy link to Enhancements to existing features"><svg class="icon-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg><svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></a>Enhancements to existing features</h2>
+
+        <h3 id="review-follow-up"><a class="heading-anchor" href="#review-follow-up" data-anchor-id="review-follow-up" aria-label="Copy link to Review follow-up enhancements"><svg class="icon-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg><svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></a>Review follow-up enhancements</h3>
+        <p>We've added new targeting capabilities to Review follow-up:</p>
+        <ul>
+          <li><strong>Target by review source type</strong> — send different follow-up campaigns depending on whether a review came from an organic submission, an invitation, or a generated link.</li>
+          <li><strong>Increased question limit</strong> — the maximum number of questions per follow-up campaign has increased from 5 to 15.</li>
+        </ul>
+        <p class="plan-note">Plan availability: Enterprise.</p>
+
+        <h3 id="product-catalog"><a class="heading-anchor" href="#product-catalog" data-anchor-id="product-catalog" aria-label="Copy link to Product reviews catalog enhancements"><svg class="icon-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg><svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></a>Product reviews catalog enhancements</h3>
+        <p>Product catalog is also receiving updates, including extended schema attributes to support AEO, an option to export your product catalog as a CSV file, and a bulk delete option for removing multiple products without reviews.</p>
+        <p class="plan-note">Plan availability: All plans.</p>
+
+        <h2 id="plan-updates"><a class="heading-anchor" href="#plan-updates" data-anchor-id="plan-updates" aria-label="Copy link to Plan updates"><svg class="icon-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg><svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></a>Plan updates</h2>
+        <p>We've refreshed our plan lineup to make it easier to find the right fit for where your business is today and where it's heading.</p>
+
+        <table class="plan-table">
+          <thead>
+            <tr><th>Plan</th><th>What it's for</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Free</td><td>Start building trust by collecting and responding to reviews.</td></tr>
+            <tr><td>Starter</td><td>A new plan for businesses ready to start actively scaling trust.</td></tr>
+            <tr><td>Plus</td><td>Showcase your reputation at the right moments in your buyer journey and convert more customers.</td></tr>
+            <tr><td>Premium</td><td>Use insights and competitive context to improve your customer experience and stand out in the market.</td></tr>
+            <tr><td>Enterprise</td><td>Scale, integrate, and automate trust as a strategic driver of reputation, acquisition, and brand authority.</td></tr>
+          </tbody>
+        </table>
+
+        <p>We've added new Getting Started guides for Free, Starter, Plus, and Premium, so you can hit the ground running on whichever plan you're on.</p>
+        <p>Several features are moving down to lower tiers, so you get more value at every level. Asset builder is now available from Plus, and Topics report and Market insights are now available from Premium.</p>
+
+        <h2 id="module-updates"><a class="heading-anchor" href="#module-updates" data-anchor-id="module-updates" aria-label="Copy link to Module updates"><svg class="icon-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg><svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></a>Module updates</h2>
+
+        <h3 id="api-modules"><a class="heading-anchor" href="#api-modules" data-anchor-id="api-modules" aria-label="Copy link to API modules"><svg class="icon-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg><svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></a>API modules</h3>
+        <p>Our existing Connect module is being replaced by three new tiered API modules.</p>
+        <ul>
+          <li><strong>API Tier 1</strong> — up to 200,000 API calls per account per year.</li>
+          <li><strong>API Tier 2</strong> — up to 1,000,000 API calls per account per year.</li>
+          <li><strong>API Tier 3</strong> — unlimited API calls per account per year.</li>
+        </ul>
+        <p>The Enterprise plan includes API Tier 1 as standard, and Premium plans can access with an add-on. Read more about the modules on our <a class="inline-link" href="https://developers.trustpilot.com/">developer guides</a>.</p>
+
+        <h3 id="location-reviews"><a class="heading-anchor" href="#location-reviews" data-anchor-id="location-reviews" aria-label="Copy link to Location reviews"><svg class="icon-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg><svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></a>Location reviews</h3>
+        <p>The Location Reviews module is now the home for all things location reviews.</p>
+
+        <div class="callout callout-rule">
+          <div class="callout-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 8v5m0 4h.01M12 3l9 16H3z" stroke="#022A1C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+          <div>
+            <div class="callout-title">Deadline — July 6, 2026</div>
+            <div class="callout-text">If you're already using locations, you have until July 6, 2026 to add the module to keep them active. All your reviews will always remain visible on your main profile page regardless, but you'll lose access to location pages.</div>
+          </div>
+        </div>
+
+        <p>That's a quick overview of what's included in our April 2026 launch. For more detail on any specific feature, check out the dedicated help articles linked throughout this page.</p>
+
+        <div class="next-step-banner">
+          <div class="next-step-title">Didn't find what you need?</div>
+          <div class="next-step-row">
+            <span>Chat with our AI agent</span>
+            <button type="button" class="btn-chat-ai"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12C4 7.582 7.582 4 12 4s8 3.582 8 8-3.582 8-8 8H6l-2 2v-4.5C4 16.5 4 12 4 12Z" stroke="#022A1C" stroke-width="1.8" stroke-linejoin="round"></path></svg>Chat</button>
+          </div>
+        </div>
+      </main>
+
+      <aside class="sidebar">
+        <div class="toc-card">
+          <div class="toc-heading">ON THIS PAGE</div>
+          <div class="toc-group">
+            <a href="#new-features" class="toc-link toc-parent active" data-group="new-features">New features</a>
+            <div class="toc-sublist" data-group-id="new-features">
+              <a href="#ai-search-analytics" class="toc-link toc-sublink">AI search analytics</a>
+              <a href="#custom-dashboards" class="toc-link toc-sublink">Custom dashboards</a>
+              <a href="#invitation-optimizer" class="toc-link toc-sublink">Invitation optimizer</a>
+              <a href="#in-app-review-collector" class="toc-link toc-sublink">In-app review collector</a>
+            </div>
+          </div>
+          <div class="toc-group">
+            <a href="#enhancements" class="toc-link toc-parent" data-group="enhancements">Enhancements to existing features</a>
+            <div class="toc-sublist" data-group-id="enhancements">
+              <a href="#review-follow-up" class="toc-link toc-sublink">Review follow-up enhancements</a>
+              <a href="#product-catalog" class="toc-link toc-sublink">Product catalog enhancements</a>
+            </div>
+          </div>
+          <div class="toc-group">
+            <a href="#plan-updates" class="toc-link toc-parent" data-group="plan-updates">Plan updates</a>
+          </div>
+          <div class="toc-group">
+            <a href="#module-updates" class="toc-link toc-parent" data-group="module-updates">Module updates</a>
+            <div class="toc-sublist" data-group-id="module-updates">
+              <a href="#api-modules" class="toc-link toc-sublink">API modules</a>
+              <a href="#location-reviews" class="toc-link toc-sublink">Location reviews</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="related-card">
+          <div class="related-heading">RELATED ARTICLES</div>
+          <a href="business.html">Trustpilot for Business plans &amp; pricing</a>
+          <a href="business.html">Setting up review invitations</a>
+          <a href="https://developers.trustpilot.com/">API documentation</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('logo-home').addEventListener('click', function () {
+      window.location.href = 'index.html';
+    });
+
+    function submitMiniSearch() {
+      var q = document.getElementById('mini-search-input').value.trim();
+      window.location.href = 'search.html' + (q ? ('?q=' + encodeURIComponent(q)) : '');
+    }
+    document.getElementById('mini-search-btn').addEventListener('click', submitMiniSearch);
+    document.getElementById('mini-search-input').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') submitMiniSearch();
+    });
+
+    // Highlight the active section in the "On this page" TOC while scrolling.
+    var tocLinks = Array.prototype.slice.call(document.querySelectorAll('.toc-link'));
+    var sections = tocLinks.map(function (link) {
+      return document.getElementById(link.getAttribute('href').slice(1));
+    });
+
+    function updateActiveToc() {
+      var activeIndex = 0;
+      for (var i = 0; i < sections.length; i++) {
+        if (sections[i] && sections[i].getBoundingClientRect().top <= 120) {
+          activeIndex = i;
+        }
+      }
+      tocLinks.forEach(function (link, i) {
+        link.classList.toggle('active', i === activeIndex);
+      });
+    }
+    window.addEventListener('scroll', updateActiveToc);
+    updateActiveToc();
+
+    // Sub-headings stay hidden in the TOC until their main heading is clicked.
+    var tocParents = Array.prototype.slice.call(document.querySelectorAll('.toc-parent'));
+    tocParents.forEach(function (parentLink) {
+      parentLink.addEventListener('click', function () {
+        var groupId = parentLink.getAttribute('data-group');
+        var sublist = document.querySelector('.toc-sublist[data-group-id="' + groupId + '"]');
+        if (!sublist) return;
+        var alreadyOpen = sublist.classList.contains('expanded');
+        document.querySelectorAll('.toc-sublist.expanded').forEach(function (el) {
+          el.classList.remove('expanded');
+        });
+        if (!alreadyOpen) sublist.classList.add('expanded');
+      });
+    });
+
+    // Copy a direct link to a heading when its anchor icon is clicked.
+    document.addEventListener('click', function (e) {
+      var anchor = e.target.closest && e.target.closest('.heading-anchor');
+      if (!anchor) return;
+      e.preventDefault();
+      var id = anchor.getAttribute('data-anchor-id');
+      var url = window.location.href.split('#')[0] + '#' + id;
+      history.pushState(null, '', '#' + id);
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).catch(function () {});
+      }
+      anchor.setAttribute('data-copied', 'true');
+      setTimeout(function () { anchor.removeAttribute('data-copied'); }, 1500);
+    });
+  </script>
+
+  <div id="site-footer"></div>
+  <script src="footer.js"></script>
+
+  <script>
+  (function () {
+    var BUTTON_BG = '#04DA8D';
+    var ICON_COLOR = '#1A1B1E';
+    var CHAT_ICON_SVG =
+      '<svg aria-hidden="true" viewBox="0 0 100 100" width="30" height="30">' +
+        '<path fill-rule="evenodd" clip-rule="evenodd" fill="' + ICON_COLOR + '" d="M50 0c27.614 0 50 20.52 50 45.833S77.614 91.667 50 91.667c-8.458 0-16.425-1.925-23.409-5.323-13.33 6.973-21.083 9.839-23.258 8.595-2.064-1.18.114-8.436 6.534-21.767C3.667 65.54 0 56.08 0 45.833 0 20.52 22.386 0 50 0zm4.583 61.667H22.917a2.917 2.917 0 000 5.833h31.666a2.917 2.917 0 000-5.833zm12.5-15.834H22.917a2.917 2.917 0 000 5.834h44.166a2.917 2.917 0 000-5.834zM79.583 30H22.917a2.917 2.917 0 000 5.833h56.666a2.917 2.917 0 000-5.833z"></path>' +
+      '</svg>';
+
+    function getHeaderHeight() {
+      var header = document.querySelector('header');
+      if (!header) return 90;
+      var rect = header.getBoundingClientRect();
+      return Math.max(0, Math.round(rect.bottom + window.scrollY));
+    }
+
+    function formatNow() {
+      try {
+        return new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+      } catch (e) {
+        return '';
+      }
+    }
+
+    function openPanel() {
+      var wrap = document.getElementById('tp-chat-fab');
+      var panel = document.getElementById('tp-chat-panel');
+      if (wrap) wrap.style.display = 'none';
+      if (!panel) return;
+      var headerHeight = getHeaderHeight() + 1;
+      panel.style.top = headerHeight + 'px';
+      panel.style.height = 'calc(100vh - ' + headerHeight + 'px)';
+      panel.style.display = 'flex';
+    }
+
+    function closePanel() {
+      var wrap = document.getElementById('tp-chat-fab');
+      var panel = document.getElementById('tp-chat-panel');
+      if (panel) panel.style.display = 'none';
+      if (wrap) wrap.style.display = 'flex';
+    }
+
+    function addChatPanel() {
+      if (document.getElementById('tp-chat-panel')) return true;
+
+      var panel = document.createElement('div');
+      panel.id = 'tp-chat-panel';
+      panel.style.cssText =
+        'position:fixed;top:91px;right:0;width:380px;height:calc(100vh - 91px);' +
+        'border-radius:8px 0 0 0;overflow:hidden;' +
+        'background:#ffffff;box-shadow:-4px 0 24px rgba(18,21,17,0.18);' +
+        'z-index:9998;display:none;flex-direction:column;' +
+        'font-family:"Trustpilot Sans",Arial,sans-serif;';
+
+      var now = formatNow();
+
+      panel.innerHTML =
+        '<div style="background:' + BUTTON_BG + ';color:' + ICON_COLOR + ';flex-shrink:0;' +
+          'display:flex;align-items:center;gap:10px;padding:0 16px;height:54px;">' +
+          '<button type="button" aria-label="Open the chat menu" style="background:none;border:none;cursor:pointer;padding:4px;display:flex;color:' + ICON_COLOR + ';">' +
+            '<svg viewBox="0 0 520 520" width="18" height="18" aria-hidden="true"><g fill="' + ICON_COLOR + '"><path d="M200 440c0-33 27-60 60-60s60 27 60 60-27 60-60 60-60-27-60-60zm0-180c0-33 27-60 60-60s60 27 60 60-27 60-60 60-60-27-60-60zm0-180c0-33 27-60 60-60s60 27 60 60-27 60-60 60-60-27-60-60z"></path></g></svg>' +
+          '</button>' +
+          '<h2 style="margin:0.1rem 0.55rem 0 0.55rem;align-self:center;flex-grow:1;text-align:left;vertical-align:middle;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:normal;letter-spacing:0.025em;font-size:medium;color:#181818;font-family:Arial,\'Twemoji Mozilla\',\'Apple Color Emoji\',\'Segoe UI Emoji\',\'Segoe UI Symbol\',\'Android Emoji\',\'Noto Color Emoji\',\'EmojiOne Color\';">AI Service Agent Sam</h2>' +
+          '<button type="button" id="tp-chat-minimize" aria-label="Minimize chat window" style="background:none;border:none;cursor:pointer;padding:4px;display:flex;color:' + ICON_COLOR + ';">' +
+            '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="' + ICON_COLOR + '" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>' +
+          '</button>' +
+        '</div>' +
+        '<div style="flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;">' +
+          '<div style="text-align:center;font-size:12px;color:#605E56;">Today &bull; ' + now + '</div>' +
+          '<div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#605E56;">' +
+            '<span style="width:22px;height:22px;border-radius:50%;background:#F3F3F3;color:#181818;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">AS</span>' +
+            '<span>AI Service Agent Sam joined &bull; ' + now + '</span>' +
+          '</div>' +
+          '<div style="display:flex;align-items:flex-start;gap:8px;">' +
+            '<span style="width:28px;height:28px;border-radius:50%;background:#F3F3F3;color:#181818;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">AS</span>' +
+            '<div style="display:flex;flex-direction:column;gap:4px;max-width:260px;">' +
+              '<div style="background:#F3F0EC;border-radius:12px;padding:10px 14px;font-size:14px;color:#121511;line-height:1.4;">' +
+                'Hi, I\'m Sam, an AI service assistant. How can I help you?' +
+              '</div>' +
+              '<span style="font-size:11px;color:#8B8880;">AI Service Agent Sam &bull; ' + now + '</span>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+        '<div style="flex-shrink:0;border-top:1px solid #E5E5E5;padding:10px 12px;display:flex;align-items:center;gap:10px;">' +
+          '<button type="button" aria-label="Attach file" style="background:none;border:none;cursor:pointer;padding:4px;display:flex;color:#605E56;flex-shrink:0;">' +
+            '<svg viewBox="0 0 100 100" width="18" height="18" aria-hidden="true"><path fill="#605E56" d="M33.846 70.577c1.154 1.154 2.885.961 4.039 0l19.23-19.23c1.347-1.347 3.654-1.54 5.385 0 1.73 1.538 1.538 4.23 0 5.768l-23.654 23.27c-5.192 5.192-13.846 5.192-19.038 0l-.193-.193c-5.192-5.192-5.192-13.846 0-19.038l41.731-41.73c5.192-5.193 13.846-5.193 19.039 0l.192.191c5.192 5.193 5.192 13.847 0 19.039l-.192.192c-.962.962-1.154 2.308-.385 3.462 1.154 2.115 2.115 4.423 2.692 6.73.385 1.539 2.116 1.924 3.27.962 1.538-1.538 2.884-3.077 2.884-3.077 9.808-9.808 9.808-25.77 0-35.577h-.384c-9.808-9.808-25.77-9.808-35.577 0L11.154 52.885c-9.808 9.807-9.808 25.769 0 35.577l.384.384a24.955 24.955 0 0035.385 0L70.77 65.192c6.154-6.154 5.962-16.154-.384-22.307-6.154-5.962-16.154-5.577-22.116.577L29.423 62.308c-1.154 1.154-1.154 3.077 0 4.23l4.423 4.039z"></path></svg>' +
+          '</button>' +
+          '<input type="text" placeholder="Type your message..." style="flex:1;border:1px solid #D9D6CE;border-radius:8px;padding:8px 12px;font-size:14px;font-family:inherit;outline:none;">' +
+        '</div>';
+
+      document.body.appendChild(panel);
+      document.getElementById('tp-chat-minimize').addEventListener('click', closePanel);
+      return true;
+    }
+
+    function addChatButton() {
+      if (document.getElementById('tp-chat-fab')) return true;
+
+      var btn = document.createElement('button');
+      btn.id = 'tp-chat-fab';
+      btn.type = 'button';
+      btn.setAttribute('aria-label', 'Chat with us');
+      btn.title = 'Chat with us';
+      btn.style.cssText =
+        'position:fixed;bottom:24px;right:24px;z-index:9999;' +
+        'display:flex;align-items:center;gap:10px;' +
+        'background:' + BUTTON_BG + ';border:none;border-radius:32px;' +
+        'padding:4px;padding-left:20px;cursor:pointer;' +
+        'box-shadow:0 4px 16px rgba(18,21,17,0.22);';
+
+      var label = document.createElement('span');
+      label.textContent = 'Chat with us';
+      label.style.cssText =
+        'color:#121511;font-size:18px;font-weight:600;' +
+        'font-family:"Trustpilot Sans",Arial,sans-serif;white-space:nowrap;';
+
+      var icon = document.createElement('span');
+      icon.style.cssText =
+        'width:48px;height:48px;flex-shrink:0;border-radius:50%;' +
+        'background:' + BUTTON_BG + ';display:flex;align-items:center;justify-content:center;';
+      icon.innerHTML = CHAT_ICON_SVG;
+
+      btn.appendChild(label);
+      btn.appendChild(icon);
+      btn.addEventListener('click', function () {
+        addChatPanel();
+        openPanel();
+      });
+
+      document.body.appendChild(btn);
+      return true;
+    }
+
+    addChatButton();
+  })();
+  </script>
+</body>
+</html>
