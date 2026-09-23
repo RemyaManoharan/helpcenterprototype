@@ -519,7 +519,7 @@
       if (!panel) return;
       var headerHeight = isLaptopScreen() ? 2 : getHeaderHeight();
       panel.style.top = headerHeight + 'px';
-      panel.style.height = 'calc(100vh - ' + headerHeight + 'px + 2px)';
+      panel.style.height = 'calc(100vh - ' + headerHeight + 'px)';
       panel.style.display = 'flex';
     }
 
@@ -536,7 +536,7 @@
       var panel = document.createElement('div');
       panel.id = 'tp-chat-panel';
       panel.style.cssText =
-        'position:fixed;top:91px;right:0;width:380px;height:calc(100vh - 91px);' +
+        'position:fixed;top:91px;right:0;width:500px;height:calc(-68px + 100vh);' +
         'border-radius:8px 0 0 0;overflow:hidden;' +
         'background:#ffffff;box-shadow:-4px 0 24px rgba(18,21,17,0.18);' +
         'z-index:9998;display:none;flex-direction:column;' +
