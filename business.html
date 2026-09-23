@@ -5147,7 +5147,7 @@
     <div class="sc-host-x" data-dc-tpl="34" style="display: contents;"><p class="CDS_Typography_appearance-subtle__da5bc0 CDS_Typography_prettyStyle__da5bc0 CDS_Typography_body-l__da5bc0" style="color: rgb(255, 255, 255);">Find articles to help answer your questions</p></div>
 
     <div data-dc-tpl="35" style="width: 100%; max-width: 640px; margin-top: 16px;">
-      <div data-dc-tpl="36" style="display: flex; align-items: center; height: 56px; border-radius: 4px; border: 1px solid rgb(217, 217, 217); background: rgb(255, 255, 255); padding: 6px; box-sizing: border-box; position: relative;" data-search-wired="1"><input data-dc-tpl="37" type="search" placeholder="Search for help articles" style="flex: 1 1 0%; min-width: 0px; height: 100%; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; outline: none; padding: 0px 14px; font-size: 16px; font-family: &quot;Trustpilot Sans&quot;, Arial, sans-serif; background: transparent; color: rgb(45, 47, 41);"><button data-dc-tpl="38" type="button" aria-label="Search" style="width: 44px; height: 44px; flex-shrink: 0; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; border-radius: 4px; background: rgb(2, 42, 28); display: flex; align-items: center; justify-content: center; cursor: pointer;"><svg data-dc-tpl="39" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle data-dc-tpl="40" cx="11" cy="11" r="7" stroke="#ffffff" stroke-width="2"></circle><path data-dc-tpl="41" d="M21 21L16 16" stroke="#ffffff" stroke-width="2" stroke-linecap="round"></path></svg></button><div style="position: absolute; top: 100%; left: 0px; right: 0px; margin-top: 8px; background: rgb(255, 255, 255); border: 1px solid rgb(229, 229, 229); border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.12) 0px 8px 24px; z-index: 50; max-height: 380px; overflow-y: auto; display: none; text-align: left; font-family: &quot;Trustpilot Sans&quot;, Arial, sans-serif;"></div></div>
+      <div data-dc-tpl="36" style="display: flex; align-items: center; height: 56px; border-radius: 4px; border: 1px solid rgb(217, 217, 217); background: rgb(255, 255, 255); padding: 6px; box-sizing: border-box; position: relative;" data-search-wired="1"><input data-dc-tpl="37" type="search" placeholder="Search for help articles" style="flex: 1 1 0%; min-width: 0px; height: 100%; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; outline: none; padding: 0px 14px; font-size: 16px; font-family: &quot;Trustpilot Sans&quot;, Arial, sans-serif; background: transparent; color: rgb(45, 47, 41);"><button data-dc-tpl="38" type="button" aria-label="Search" style="width: 44px; height: 44px; flex-shrink: 0; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; border-radius: 4px; background: rgb(2, 42, 28); display: flex; align-items: center; justify-content: center; cursor: pointer;"><svg data-dc-tpl="39" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle data-dc-tpl="40" cx="11" cy="11" r="7" stroke="#ffffff" stroke-width="2"></circle><path data-dc-tpl="41" d="M21 21L16 16" stroke="#ffffff" stroke-width="2" stroke-linecap="round"></path></svg></button><div id="home-search-suggestions" style="position: absolute; top: 100%; left: 0px; right: 0px; margin-top: 8px; background: rgb(255, 255, 255); border: 1px solid rgb(229, 229, 229); border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.12) 0px 8px 24px; z-index: 50; max-height: 380px; overflow-y: auto; display: none; text-align: left; font-family: &quot;Trustpilot Sans&quot;, Arial, sans-serif;"></div></div>
     </div>
 
     <div data-dc-tpl="42" style="display: flex; align-items: center; gap: 24px; margin-top: 20px; flex-wrap: wrap; justify-content: center;">
@@ -5627,6 +5627,7 @@
 
 
 
+<script src="data.js"></script>
 <script>
 (function () {
   var searchWrap = document.querySelector('[data-search-wired]');
@@ -5640,6 +5641,98 @@
     if (btn) btn.addEventListener('click', submitHomeSearch);
     if (input) input.addEventListener('keydown', function (e) {
       if (e.key === 'Enter') submitHomeSearch();
+    });
+
+    var suggestionsEl = document.getElementById('home-search-suggestions');
+    var TAG_COLORS = {
+      REVIEWER: { bg: '#FFC2A6', color: '#5A1B0C' },
+      BUSINESS: { bg: '#BFB9F1', color: '#33236A' }
+    };
+
+    function escapeHtml(str) {
+      return String(str).replace(/[&<>"]/g, function (c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+      });
+    }
+
+    function matchesSuggestion(article, q) {
+      if (article.label.toLowerCase().indexOf(q) !== -1) return true;
+      if (article.topic && article.topic.toLowerCase().indexOf(q) !== -1) return true;
+      if (article.subtopic && article.subtopic.toLowerCase().indexOf(q) !== -1) return true;
+      for (var i = 0; i < article.keywords.length; i++) {
+        if (article.keywords[i].toLowerCase().indexOf(q) !== -1) return true;
+      }
+      return false;
+    }
+
+    function suggestionScore(article, q) {
+      var label = article.label.toLowerCase();
+      if (label.indexOf(q) === 0) return 3;
+      if (label.indexOf(q) !== -1) return 2;
+      return 1;
+    }
+
+    function hideSuggestions() {
+      if (!suggestionsEl) return;
+      suggestionsEl.style.display = 'none';
+      suggestionsEl.innerHTML = '';
+    }
+
+    function renderSuggestions(q) {
+      if (!suggestionsEl || typeof HELP_CENTER_ARTICLES === 'undefined') return;
+      if (!q) {
+        hideSuggestions();
+        return;
+      }
+
+      var matches = HELP_CENTER_ARTICLES.filter(function (a) { return matchesSuggestion(a, q); });
+      matches.sort(function (a, b) { return suggestionScore(b, q) - suggestionScore(a, q); });
+      matches = matches.slice(0, 6);
+
+      if (matches.length === 0) {
+        suggestionsEl.innerHTML = '<div style="padding:16px;font-size:14px;color:#605E56;">No articles match &quot;' + escapeHtml(q) + '&quot;.</div>';
+        suggestionsEl.style.display = 'block';
+        return;
+      }
+
+      suggestionsEl.innerHTML = matches.map(function (a, i) {
+        var tagStyle = TAG_COLORS[a.tag] || { bg: '#EEEEEE', color: '#333333' };
+        return '' +
+          '<div class="home-search-suggestion" data-idx="' + i + '" style="padding:12px 16px;cursor:pointer;border-bottom:1px solid #F0EEEB;display:flex;flex-direction:column;gap:4px;">' +
+            '<div style="font-size:14px;color:#2D2F29;font-weight:600;">' + escapeHtml(a.label) + '</div>' +
+            '<div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#605E56;">' +
+              '<span style="display:inline-block;font-size:10px;font-weight:700;letter-spacing:0.04em;padding:2px 7px;border-radius:4px;background:' + tagStyle.bg + ';color:' + tagStyle.color + ';">' + a.tag + '</span>' +
+              '<span>' + escapeHtml(a.topic) + (a.subtopic ? ' &rsaquo; ' + escapeHtml(a.subtopic) : '') + '</span>' +
+            '</div>' +
+          '</div>';
+      }).join('');
+      suggestionsEl.style.display = 'block';
+
+      Array.prototype.slice.call(suggestionsEl.querySelectorAll('.home-search-suggestion')).forEach(function (row) {
+        row.addEventListener('mouseenter', function () { row.style.background = '#F6F3F1'; });
+        row.addEventListener('mouseleave', function () { row.style.background = ''; });
+        row.addEventListener('mousedown', function (e) {
+          e.preventDefault();
+          var match = matches[Number(row.getAttribute('data-idx'))];
+          if (match) window.location.href = match.pageUrl;
+        });
+      });
+    }
+
+    if (input) {
+      input.addEventListener('input', function () {
+        renderSuggestions(input.value.trim().toLowerCase());
+      });
+      input.addEventListener('focus', function () {
+        if (input.value.trim()) renderSuggestions(input.value.trim().toLowerCase());
+      });
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') hideSuggestions();
+      });
+    }
+
+    document.addEventListener('click', function (e) {
+      if (suggestionsEl && !searchWrap.contains(e.target)) hideSuggestions();
     });
   }
 
