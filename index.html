@@ -5140,6 +5140,7 @@
       <div class="sc-host-x" data-dc-tpl="29" style="display: contents;"><a class="CDS_Typography_appearance-action__da5bc0 CDS_Typography_prettyStyle__da5bc0 CDS_Link_link__a59334 CDS_Link_underline__a59334" href="business.html" style="font-family: &quot;Trustpilot Sans&quot;, Arial, sans-serif;">Business</a></div>
       <div class="sc-host-x" data-dc-tpl="30" style="display: contents;"><a class="CDS_Typography_appearance-action__da5bc0 CDS_Typography_prettyStyle__da5bc0 CDS_Link_link__a59334 CDS_Link_underline__a59334" href="https://developers.trustpilot.com/" style="font-family: &quot;Trustpilot Sans&quot;, Arial, sans-serif;">Developers</a></div>
       <div class="sc-host-x" data-dc-tpl="31" style="display: contents;"><a class="CDS_Typography_appearance-action__da5bc0 CDS_Typography_prettyStyle__da5bc0 CDS_Link_link__a59334 CDS_Link_underline__a59334" href="contact-us.html" style="font-family: &quot;Trustpilot Sans&quot;, Arial, sans-serif;">Contact Us</a></div>
+      <a href="#" id="ask-ai-nav-btn" style="font-family: &quot;Trustpilot Sans&quot;, Arial, sans-serif; background: rgb(2, 42, 28); color: rgb(255, 255, 255) !important; border-radius: 8px; padding: 8px 16px; text-decoration: none; font-weight: 600; white-space: nowrap;">Ask AI</a>
     </div>
   </div>
   </div>
@@ -5455,12 +5456,7 @@
 </script>
 <script>
 (function () {
-  var BUTTON_BG = '#04DA8D';
   var ICON_COLOR = '#1A1B1E';
-  var CHAT_ICON_SVG =
-    '<svg aria-hidden="true" viewBox="0 0 100 100" width="30" height="30">' +
-      '<path fill-rule="evenodd" clip-rule="evenodd" fill="' + ICON_COLOR + '" d="M50 0c27.614 0 50 20.52 50 45.833S77.614 91.667 50 91.667c-8.458 0-16.425-1.925-23.409-5.323-13.33 6.973-21.083 9.839-23.258 8.595-2.064-1.18.114-8.436 6.534-21.767C3.667 65.54 0 56.08 0 45.833 0 20.52 22.386 0 50 0zm4.583 61.667H22.917a2.917 2.917 0 000 5.833h31.666a2.917 2.917 0 000-5.833zm12.5-15.834H22.917a2.917 2.917 0 000 5.834h44.166a2.917 2.917 0 000-5.834zM79.583 30H22.917a2.917 2.917 0 000 5.833h56.666a2.917 2.917 0 000-5.833z"></path>' +
-    '</svg>';
 
   function getHeaderHeight() {
     var header = document.querySelector('header');
@@ -5469,22 +5465,12 @@
     return Math.max(0, Math.round(rect.bottom + window.scrollY));
   }
 
-  function formatNow() {
-    try {
-      return new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
-    } catch (e) {
-      return '';
-    }
-  }
-
   function isLaptopScreen() {
     return window.innerWidth < 1600;
   }
 
   function openPanel() {
-    var wrap = document.getElementById('tp-chat-fab');
     var panel = document.getElementById('tp-chat-panel');
-    if (wrap) wrap.style.display = 'none';
     if (!panel) return;
     var headerHeight = isLaptopScreen() ? 2 : getHeaderHeight();
     panel.style.top = headerHeight + 'px';
@@ -5493,10 +5479,8 @@
   }
 
   function closePanel() {
-    var wrap = document.getElementById('tp-chat-fab');
     var panel = document.getElementById('tp-chat-panel');
     if (panel) panel.style.display = 'none';
-    if (wrap) wrap.style.display = 'flex';
   }
 
   function addChatPanel() {
@@ -5511,86 +5495,91 @@
       'z-index:9998;display:none;flex-direction:column;' +
       'font-family:"Trustpilot Sans",Arial,sans-serif;';
 
-    var now = formatNow();
-
     panel.innerHTML =
-      '<div style="background:' + BUTTON_BG + ';color:' + ICON_COLOR + ';flex-shrink:0;' +
+      '<div style="background:#ffffff;color:#1A1B1E;flex-shrink:0;border-bottom:1px solid #E5E5E5;' +
         'display:flex;align-items:center;gap:10px;padding:0 16px;height:54px;">' +
-        '<button type="button" aria-label="Open the chat menu" style="background:none;border:none;cursor:pointer;padding:4px;display:flex;color:' + ICON_COLOR + ';">' +
-          '<svg viewBox="0 0 520 520" width="18" height="18" aria-hidden="true"><g fill="' + ICON_COLOR + '"><path d="M200 440c0-33 27-60 60-60s60 27 60 60-27 60-60 60-60-27-60-60zm0-180c0-33 27-60 60-60s60 27 60 60-27 60-60 60-60-27-60-60zm0-180c0-33 27-60 60-60s60 27 60 60-27 60-60 60-60-27-60-60z"></path></g></svg>' +
-        '</button>' +
-        '<h2 style="margin:0.1rem 0.55rem 0 0.55rem;align-self:center;flex-grow:1;text-align:left;vertical-align:middle;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:normal;letter-spacing:0.025em;font-size:medium;color:#181818;font-family:Arial,\'Twemoji Mozilla\',\'Apple Color Emoji\',\'Segoe UI Emoji\',\'Segoe UI Symbol\',\'Android Emoji\',\'Noto Color Emoji\',\'EmojiOne Color\';">AI Service Agent Sam</h2>' +
+        '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" style="flex-shrink:0;"><path fill="rgb(4, 218, 141)" d="M12 2l1.6 5.9L19.5 9.5l-5.9 1.6L12 17l-1.6-5.9L4.5 9.5l5.9-1.6L12 2z"></path></svg>' +
+        '<h2 style="margin:0.1rem 0.55rem 0 0.35rem;align-self:center;flex-grow:1;text-align:left;vertical-align:middle;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600;letter-spacing:0.025em;font-size:medium;color:#1A1B1E;font-family:Arial,\'Twemoji Mozilla\',\'Apple Color Emoji\',\'Segoe UI Emoji\',\'Segoe UI Symbol\',\'Android Emoji\',\'Noto Color Emoji\',\'EmojiOne Color\';">AI Assistant</h2>' +
         '<button type="button" id="tp-chat-minimize" aria-label="Minimize chat window" style="background:none;border:none;cursor:pointer;padding:4px;display:flex;color:' + ICON_COLOR + ';">' +
           '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="' + ICON_COLOR + '" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>' +
         '</button>' +
       '</div>' +
-      '<div style="flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;">' +
-        '<div style="text-align:center;font-size:12px;color:#605E56;">Today &bull; ' + now + '</div>' +
-        '<div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#605E56;">' +
-          '<span style="width:22px;height:22px;border-radius:50%;background:#F3F3F3;color:#181818;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">AS</span>' +
-          '<span>AI Service Agent Sam joined &bull; ' + now + '</span>' +
-        '</div>' +
-        '<div style="display:flex;align-items:flex-start;gap:8px;">' +
-          '<span style="width:28px;height:28px;border-radius:50%;background:#F3F3F3;color:#181818;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">AS</span>' +
-          '<div style="display:flex;flex-direction:column;gap:4px;max-width:260px;">' +
-            '<div style="background:#F3F0EC;border-radius:12px;padding:10px 14px;font-size:14px;color:#121511;line-height:1.4;">' +
-              'Hi, I\'m Sam, an AI service assistant. How can I help you?' +
+      '<div style="flex:1;overflow-y:auto;padding:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:12px;">' +
+        '<svg viewBox="0 0 80 80" width="64" height="64" aria-hidden="true">' +
+          '<path fill="rgb(4, 218, 141)" d="M40 14L45.5 34.5L66 40L45.5 45.5L40 66L34.5 45.5L14 40L34.5 34.5L40 14Z"></path>' +
+          '<path fill="#B9F3DC" d="M63 16L66 25L75 28L66 31L63 40L60 31L51 28L60 25L63 16Z"></path>' +
+        '</svg>' +
+        '<h3 style="margin:4px 0 0;font-size:20px;font-weight:700;color:#1A1B1E;font-family:\'Trustpilot Sans\',Arial,sans-serif;">How can I help you today?</h3>' +
+        '<p style="margin:0;max-width:280px;font-size:14px;line-height:1.4;color:#605E56;">I\'ll find the right articles and walk you through it.</p>' +
+      '</div>' +
+      '<div style="flex-shrink:0;border-top:1px solid #E5E5E5;padding:12px 16px 16px;display:flex;flex-direction:column;gap:8px;">' +
+        '<div style="border:1px solid #D9D6CE;border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:8px;">' +
+          '<input type="text" placeholder="Ask a question or describe your issue&hellip;" style="border:none;outline:none;background:none;font-size:14px;font-family:inherit;color:#1A1B1E;">' +
+          '<div style="display:flex;align-items:center;justify-content:space-between;position:relative;">' +
+            '<button type="button" id="tp-chat-actions-btn" aria-label="Actions" aria-expanded="false" style="background:none;border:none;cursor:pointer;padding:4px;display:flex;align-items:center;gap:6px;color:#605E56;font-size:13px;font-family:inherit;">' +
+              '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path stroke="#605E56" stroke-width="2" stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"></path></svg>' +
+              '<span>Actions</span>' +
+            '</button>' +
+            '<div id="tp-chat-actions-menu" style="display:none;position:absolute;bottom:32px;left:0;background:#ffffff;border:1px solid #E5E5E5;border-radius:8px;box-shadow:0 8px 24px rgba(18,21,17,0.12);min-width:180px;z-index:1;overflow:hidden;">' +
+              '<button type="button" id="tp-chat-download" style="display:block;width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:10px 14px;font-size:13px;color:#1A1B1E;font-family:inherit;">Download transcript</button>' +
+              '<button type="button" id="tp-chat-end" style="display:block;width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:10px 14px;font-size:13px;color:#B3261E;font-family:inherit;border-top:1px solid #E5E5E5;">End conversation</button>' +
             '</div>' +
-            '<span style="font-size:11px;color:#8B8880;">AI Service Agent Sam &bull; ' + now + '</span>' +
+            '<div style="display:flex;align-items:center;gap:6px;">' +
+              '<button type="button" aria-label="Attach file" style="background:none;border:none;cursor:pointer;padding:4px;display:flex;color:#605E56;flex-shrink:0;">' +
+                '<svg viewBox="0 0 100 100" width="18" height="18" aria-hidden="true"><path fill="#605E56" d="M33.846 70.577c1.154 1.154 2.885.961 4.039 0l19.23-19.23c1.347-1.347 3.654-1.54 5.385 0 1.73 1.538 1.538 4.23 0 5.768l-23.654 23.27c-5.192 5.192-13.846 5.192-19.038 0l-.193-.193c-5.192-5.192-5.192-13.846 0-19.038l41.731-41.73c5.192-5.193 13.846-5.193 19.039 0l.192.191c5.192 5.193 5.192 13.847 0 19.039l-.192.192c-.962.962-1.154 2.308-.385 3.462 1.154 2.115 2.115 4.423 2.692 6.73.385 1.539 2.116 1.924 3.27.962 1.538-1.538 2.884-3.077 2.884-3.077 9.808-9.808 9.808-25.77 0-35.577h-.384c-9.808-9.808-25.77-9.808-35.577 0L11.154 52.885c-9.808 9.807-9.808 25.769 0 35.577l.384.384a24.955 24.955 0 0035.385 0L70.77 65.192c6.154-6.154 5.962-16.154-.384-22.307-6.154-5.962-16.154-5.577-22.116.577L29.423 62.308c-1.154 1.154-1.154 3.077 0 4.23l4.423 4.039z"></path></svg>' +
+              '</button>' +
+              '<button type="button" aria-label="Send message" style="background:#F3F3F3;border:none;border-radius:50%;width:28px;height:28px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;">' +
+                '<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path stroke="#1A1B1E" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" d="M12 19V5M5 12l7-7 7 7"></path></svg>' +
+              '</button>' +
+            '</div>' +
           '</div>' +
         '</div>' +
-      '</div>' +
-      '<div style="flex-shrink:0;border-top:1px solid #E5E5E5;padding:10px 12px;display:flex;align-items:center;gap:10px;">' +
-        '<button type="button" aria-label="Attach file" style="background:none;border:none;cursor:pointer;padding:4px;display:flex;color:#605E56;flex-shrink:0;">' +
-          '<svg viewBox="0 0 100 100" width="18" height="18" aria-hidden="true"><path fill="#605E56" d="M33.846 70.577c1.154 1.154 2.885.961 4.039 0l19.23-19.23c1.347-1.347 3.654-1.54 5.385 0 1.73 1.538 1.538 4.23 0 5.768l-23.654 23.27c-5.192 5.192-13.846 5.192-19.038 0l-.193-.193c-5.192-5.192-5.192-13.846 0-19.038l41.731-41.73c5.192-5.193 13.846-5.193 19.039 0l.192.191c5.192 5.193 5.192 13.847 0 19.039l-.192.192c-.962.962-1.154 2.308-.385 3.462 1.154 2.115 2.115 4.423 2.692 6.73.385 1.539 2.116 1.924 3.27.962 1.538-1.538 2.884-3.077 2.884-3.077 9.808-9.808 9.808-25.77 0-35.577h-.384c-9.808-9.808-25.77-9.808-35.577 0L11.154 52.885c-9.808 9.807-9.808 25.769 0 35.577l.384.384a24.955 24.955 0 0035.385 0L70.77 65.192c6.154-6.154 5.962-16.154-.384-22.307-6.154-5.962-16.154-5.577-22.116.577L29.423 62.308c-1.154 1.154-1.154 3.077 0 4.23l4.423 4.039z"></path></svg>' +
-        '</button>' +
-        '<input type="text" placeholder="Type your message..." style="flex:1;border:1px solid #D9D6CE;border-radius:8px;padding:8px 12px;font-size:14px;font-family:inherit;outline:none;">' +
+        '<div style="text-align:center;font-size:11px;color:#8B8880;">AI-generated responses may contain mistakes.</div>' +
       '</div>';
 
     document.body.appendChild(panel);
     document.getElementById('tp-chat-minimize').addEventListener('click', closePanel);
+
+    var actionsBtn = document.getElementById('tp-chat-actions-btn');
+    var actionsMenu = document.getElementById('tp-chat-actions-menu');
+    actionsBtn.addEventListener('click', function () {
+      var isOpen = actionsMenu.style.display === 'block';
+      actionsMenu.style.display = isOpen ? 'none' : 'block';
+      actionsBtn.setAttribute('aria-expanded', String(!isOpen));
+    });
+    document.addEventListener('click', function (e) {
+      if (!actionsMenu.contains(e.target) && e.target !== actionsBtn && !actionsBtn.contains(e.target)) {
+        actionsMenu.style.display = 'none';
+        actionsBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+    document.getElementById('tp-chat-download').addEventListener('click', function () {
+      var transcript = 'AI Assistant\n\nHow can I help you today?';
+      var blob = new Blob([transcript], { type: 'text/plain' });
+      var url = URL.createObjectURL(blob);
+      var link = document.createElement('a');
+      link.href = url;
+      link.download = 'chat-transcript.txt';
+      link.click();
+      URL.revokeObjectURL(url);
+      actionsMenu.style.display = 'none';
+    });
+    document.getElementById('tp-chat-end').addEventListener('click', function () {
+      closePanel();
+      panel.remove();
+    });
+
     return true;
   }
 
-  function addChatButton() {
-    if (document.getElementById('tp-chat-fab')) return true;
-
-    var btn = document.createElement('button');
-    btn.id = 'tp-chat-fab';
-    btn.type = 'button';
-    btn.setAttribute('aria-label', 'Chat with us');
-    btn.title = 'Chat with us';
-    btn.style.cssText =
-      'position:fixed;bottom:24px;right:24px;z-index:9999;' +
-      'display:flex;align-items:center;gap:10px;' +
-      'background:' + BUTTON_BG + ';border:none;border-radius:32px;' +
-      'padding:4px;padding-left:20px;cursor:pointer;' +
-      'box-shadow:0 4px 16px rgba(18,21,17,0.22);';
-
-    var label = document.createElement('span');
-    label.textContent = 'Chat with us';
-    label.style.cssText =
-      'color:#121511;font-size:18px;font-weight:600;' +
-      'font-family:"Trustpilot Sans",Arial,sans-serif;white-space:nowrap;';
-
-    var icon = document.createElement('span');
-    icon.style.cssText =
-      'width:48px;height:48px;flex-shrink:0;border-radius:50%;' +
-      'background:' + BUTTON_BG + ';display:flex;align-items:center;justify-content:center;';
-    icon.innerHTML = CHAT_ICON_SVG;
-
-    btn.appendChild(label);
-    btn.appendChild(icon);
-    btn.addEventListener('click', function () {
+  var askAiBtn = document.getElementById('ask-ai-nav-btn');
+  if (askAiBtn) {
+    askAiBtn.addEventListener('click', function (e) {
+      e.preventDefault();
       addChatPanel();
       openPanel();
     });
-
-    document.body.appendChild(btn);
-    return true;
   }
-
-  addChatButton();
 })();
 </script>
 </body></html>
