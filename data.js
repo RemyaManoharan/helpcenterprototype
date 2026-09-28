@@ -214,16 +214,35 @@ const HELP_CENTER_DATA = {
     topics: [
       {
         id: "biz-getting-started",
-        label: "Getting started (Plans)",
+        label: "Getting Started",
+        summary: "Choose your plan below and we'll guide you through the steps to set up your account with ease. It's time to start building trust, growing and improving your business with Trustpilot.",
         subtopics: [
           {
-            id: "biz-choose-your-plan",
-            label: "Choose your plan",
+            id: "biz-free-plan",
+            label: "Free plan",
             articles: [
-              { id: "biz-starter-plan-article", label: "Getting started with Trustpilot's Starter plan" },
-              { id: "biz-premium-plan-article", label: "Getting started with Trustpilot's Premium plan" },
-              { id: "biz-plus-plan-article", label: "Getting started with Trustpilot's Plus plan" },
               { id: "biz-free-plan-article", label: "Getting started with Trustpilot's Free plan" }
+            ]
+          },
+          {
+            id: "biz-starter-plan",
+            label: "Starter plan",
+            articles: [
+              { id: "biz-starter-plan-article", label: "Getting started with Trustpilot's Starter plan" }
+            ]
+          },
+          {
+            id: "biz-plus-plan",
+            label: "Plus plan",
+            articles: [
+              { id: "biz-plus-plan-article", label: "Getting started with Trustpilot's Plus plan" }
+            ]
+          },
+          {
+            id: "biz-premium-plan",
+            label: "Premium plan",
+            articles: [
+              { id: "biz-premium-plan-article", label: "Getting started with Trustpilot's Premium plan" }
             ]
           }
         ]
