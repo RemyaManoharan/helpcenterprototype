@@ -5808,4 +5808,58 @@
   }
 })();
 </script>
+<script>
+(function () {
+  var DEFAULT_OPEN_TOPIC = 'Collect Reviews';
+
+  function enhanceTopicCard(card) {
+    if (card.dataset.accordionWired === '1') return;
+    var wrapper = card.firstElementChild;
+    if (!wrapper || wrapper.children.length < 2) return;
+    card.dataset.accordionWired = '1';
+
+    var headingHost = wrapper.children[0];
+    var contentRows = Array.prototype.slice.call(wrapper.children, 1);
+    var heading = headingHost.querySelector('h3');
+    var chevron = headingHost.querySelector('svg');
+    var chevronWrap = chevron ? chevron.parentElement : null;
+    var title = heading ? heading.textContent.trim() : '';
+    var expanded = title === DEFAULT_OPEN_TOPIC;
+
+    function apply() {
+      contentRows.forEach(function (row) {
+        row.style.display = expanded ? '' : 'none';
+      });
+      if (chevronWrap) {
+        chevronWrap.style.transform = expanded ? 'rotate(180deg)' : 'rotate(0deg)';
+      }
+    }
+
+    if (chevronWrap) {
+      chevronWrap.style.cursor = 'pointer';
+      chevronWrap.addEventListener('click', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        expanded = !expanded;
+        apply();
+      });
+    }
+    apply();
+  }
+
+  function setupTopicAccordions() {
+    var cards = document.querySelectorAll('[data-collapsible="1"]');
+    if (!cards.length) return false;
+    cards.forEach(enhanceTopicCard);
+    return true;
+  }
+
+  var tries = 0;
+  var interval = setInterval(function () {
+    var done = setupTopicAccordions();
+    tries++;
+    if (done || tries > 40) clearInterval(interval);
+  }, 250);
+})();
+</script>
 </body></html>
