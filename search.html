@@ -157,7 +157,7 @@
   .result-card h4 {
     font-size: 17px;
     font-weight: 700;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
   .result-meta {
     display: flex;
@@ -166,6 +166,7 @@
     flex-wrap: wrap;
     font-size: 13px;
     color: #605E56;
+    margin-bottom: 8px;
   }
   .tag-pill {
     display: inline-block;
@@ -175,6 +176,23 @@
     letter-spacing: 0.04em;
     padding: 3px 8px;
     border-radius: 4px;
+  }
+  .result-summary {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #605E56;
+  }
+  .result-summary mark {
+    background: #FFF1A6;
+    color: inherit;
+    border-radius: 2px;
+    padding: 0 1px;
+  }
+  .result-card h4 mark {
+    background: #FFF1A6;
+    color: inherit;
+    border-radius: 2px;
+    padding: 0 1px;
   }
   .empty-state {
     padding: 48px 0;
@@ -257,6 +275,25 @@
     var params = new URLSearchParams(location.search);
     var initialQuery = params.get('q') || '';
     var initialAudience = params.get('audience'); // 'reviewer' | 'business' | null
+
+    function escapeHtml(str) {
+      return String(str).replace(/[&<>"]/g, function (c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+      });
+    }
+
+    function escapeRegExp(str) {
+      return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    // Wraps every case-insensitive match of `q` in `text` with <mark>, HTML-escaping the rest.
+    function highlightMatches(text, q) {
+      if (!q) return escapeHtml(text);
+      var parts = String(text).split(new RegExp('(' + escapeRegExp(q) + ')', 'ig'));
+      return parts.map(function (part, i) {
+        return i % 2 === 1 ? '<mark>' + escapeHtml(part) + '</mark>' : escapeHtml(part);
+      }).join('');
+    }
 
     var searchInput = document.getElementById('search-input');
     var searchBtn = document.getElementById('search-btn');
@@ -371,11 +408,11 @@
         card.className = 'result-card';
         card.style.cursor = 'pointer';
         card.innerHTML =
-          '<h4>' + a.label + '</h4>' +
+          '<h4>' + highlightMatches(a.label, q) + '</h4>' +
           '<div class="result-meta">' +
             '<span class="tag-pill" style="background:' + tagStyle.bg + ';color:' + tagStyle.color + ';">' + a.tag + '</span>' +
-            '<span>' + a.topic + (a.subtopic ? ' &rsaquo; ' + a.subtopic : '') + '</span>' +
-          '</div>';
+          '</div>' +
+          (a.summary ? '<p class="result-summary">' + highlightMatches(a.summary, q) + '</p>' : '');
         card.addEventListener('click', function () { window.location.href = a.pageUrl; });
         resultsListEl.appendChild(card);
       });
