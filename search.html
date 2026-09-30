@@ -525,26 +525,44 @@
       audienceAll.checked = which === 'all';
       audienceReviewer.checked = which === 'reviewer';
       audienceBusiness.checked = which === 'business';
+      renderTopicFilters();
       render();
     }
     audienceAll.addEventListener('change', function () { setAudience('all'); });
     audienceReviewer.addEventListener('change', function () { setAudience(audienceReviewer.checked ? 'reviewer' : 'all'); });
     audienceBusiness.addEventListener('change', function () { setAudience(audienceBusiness.checked ? 'business' : 'all'); });
 
-    // Build the Topic checkbox list from the real data, alphabetically, deduped.
-    var allTopics = Array.from(new Set(HELP_CENTER_ARTICLES.map(function (a) { return a.topic; }))).sort();
-    allTopics.forEach(function (topic) {
-      var label = document.createElement('label');
-      label.className = 'filter-option';
-      var checkbox = document.createElement('input');
-      checkbox.type = 'checkbox';
-      checkbox.className = 'topic-checkbox';
-      checkbox.value = topic;
-      checkbox.addEventListener('change', render);
-      label.appendChild(checkbox);
-      label.appendChild(document.createTextNode(topic));
-      topicFiltersEl.appendChild(label);
-    });
+    // Only the first letter of a topic label is capitalized when displayed.
+    function toSentenceCase(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+    }
+
+    // Rebuilds the Topic checkbox list from the topics that exist for the
+    // currently selected audience (All / Reviewers / Businesses), alphabetically, deduped.
+    function renderTopicFilters() {
+      var audienceFilter = currentAudienceFilter();
+      var previouslyChecked = currentTopicFilters();
+      var articles = audienceFilter
+        ? HELP_CENTER_ARTICLES.filter(function (a) { return a.audience === audienceFilter; })
+        : HELP_CENTER_ARTICLES;
+      var topics = Array.from(new Set(articles.map(function (a) { return a.topic; }))).sort();
+
+      topicFiltersEl.innerHTML = '';
+      topics.forEach(function (topic) {
+        var label = document.createElement('label');
+        label.className = 'filter-option';
+        var checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.className = 'topic-checkbox';
+        checkbox.value = topic;
+        checkbox.checked = previouslyChecked.indexOf(topic) !== -1;
+        checkbox.addEventListener('change', render);
+        label.appendChild(checkbox);
+        label.appendChild(document.createTextNode(toSentenceCase(topic)));
+        topicFiltersEl.appendChild(label);
+      });
+    }
+    renderTopicFilters();
 
     sortSelect.addEventListener('change', render);
 
