@@ -32359,6 +32359,84 @@
     </style>
   </head>
   <body>
+    <style id="responsive-overrides">
+      .nav-toggle-btn {
+        display: none;
+      }
+      @media (max-width: 860px) {
+        .nav-toggle-btn {
+          order: 2;
+          display: flex !important;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 5px;
+          width: 40px;
+          height: 40px;
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 0;
+          flex-shrink: 0;
+        }
+        .nav-toggle-btn span {
+          display: block;
+          width: 22px;
+          height: 2px;
+          background: #2d2f29;
+        }
+        #site-nav-links {
+          display: flex !important;
+          position: static;
+          order: 1;
+          margin-left: auto;
+          margin-right: 16px;
+          flex-direction: row !important;
+          align-items: center !important;
+          gap: 12px !important;
+        }
+        #site-nav-links > div {
+          display: none !important;
+        }
+        #site-nav-links.nav-open {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          margin-left: 0;
+          margin-right: 0;
+          flex-direction: column !important;
+          align-items: flex-start !important;
+          gap: 16px !important;
+          background: #ffffff;
+          border-bottom: 1px solid #e5e5e5;
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+          padding: 16px 24px 20px;
+          z-index: 40;
+        }
+        #site-nav-links.nav-open > div {
+          display: contents !important;
+        }
+        #site-nav-links > div > a {
+          width: 100%;
+        }
+        [style*="grid-template-columns: repeat("] {
+          grid-template-columns: 1fr !important;
+        }
+      }
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var navToggle = document.getElementById("nav-toggle-btn");
+        var navLinks = document.getElementById("site-nav-links");
+        if (navToggle && navLinks) {
+          navToggle.addEventListener("click", function () {
+            var isOpen = navLinks.classList.toggle("nav-open");
+            navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+          });
+        }
+      });
+    </script>
     <div id="dc-root">
       <div class="sc-host" data-sc-name="reviewer">
         <div class="sc-host-x" data-dc-tpl="18" style="display: contents">
@@ -32371,6 +32449,7 @@
               style="
                 background: rgb(255, 255, 255);
                 border-bottom: 1px solid rgb(217, 217, 217);
+                position: relative;
               "
             >
               <div
@@ -32429,8 +32508,19 @@
                     ></path>
                   </svg>
                 </a>
+                <button
+                  type="button"
+                  class="nav-toggle-btn"
+                  id="nav-toggle-btn"
+                  aria-label="Menu"
+                  aria-expanded="false"
+                  aria-controls="site-nav-links"
+                >
+                  <span></span><span></span><span></span>
+                </button>
                 <div
                   data-dc-tpl="27"
+                  id="site-nav-links"
                   style="display: flex; align-items: center; gap: 32px"
                 >
                   <div
@@ -33478,6 +33568,19 @@
               </div>
             </div>
 
+            <style>
+              @media (max-width: 860px) {
+                [data-columnized="1"] {
+                  flex-direction: column !important;
+                }
+                [data-columnized="1"] > div {
+                  width: 100% !important;
+                }
+                [style*="grid-template-columns: repeat("] {
+                  grid-template-columns: 1fr !important;
+                }
+              }
+            </style>
             <div
               data-dc-tpl="65"
               style="

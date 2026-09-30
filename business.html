@@ -32365,6 +32365,7 @@
       }
       @media (max-width: 860px) {
         .nav-toggle-btn {
+          order: 2;
           display: flex !important;
           flex-direction: column;
           align-items: center;
@@ -32385,32 +32386,63 @@
           background: #2d2f29;
         }
         #site-nav-links {
+          display: flex !important;
+          position: static;
+          order: 1;
+          margin-left: auto;
+          margin-right: 16px;
+          flex-direction: row !important;
+          align-items: center !important;
+          gap: 12px !important;
+        }
+        #site-nav-links > div {
           display: none !important;
+        }
+        #site-nav-links.nav-open {
           position: absolute;
           top: 100%;
           left: 0;
           right: 0;
+          margin-left: 0;
+          margin-right: 0;
           flex-direction: column !important;
           align-items: flex-start !important;
-          gap: 0 !important;
+          gap: 16px !important;
           background: #ffffff;
           border-bottom: 1px solid #e5e5e5;
           box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
-          padding: 8px 24px 16px;
+          padding: 16px 24px 20px;
           z-index: 40;
         }
-        #site-nav-links.nav-open {
-          display: flex !important;
+        #site-nav-links.nav-open > div {
+          display: contents !important;
         }
-        #site-nav-links > div {
+        #site-nav-links > div > a {
           width: 100%;
-          padding: 10px 0;
         }
         [style*="grid-template-columns: repeat("] {
           grid-template-columns: 1fr !important;
         }
+        [data-columnized="1"] {
+          flex-direction: column !important;
+        }
+        [data-columnized="1"] > div {
+          width: 100% !important;
+        }
       }
     </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var navToggle = document.getElementById("nav-toggle-btn");
+        var navLinks = document.getElementById("site-nav-links");
+        if (navToggle && navLinks) {
+          navToggle.addEventListener("click", function () {
+            var isOpen = navLinks.classList.toggle("nav-open");
+            navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+          });
+        }
+      });
+    </script>
 
     <div id="dc-root">
       <div class="sc-host" data-sc-name="business">
@@ -32484,8 +32516,19 @@
                     ></path>
                   </svg>
                 </a>
+                <button
+                  type="button"
+                  class="nav-toggle-btn"
+                  id="nav-toggle-btn"
+                  aria-label="Menu"
+                  aria-expanded="false"
+                  aria-controls="site-nav-links"
+                >
+                  <span></span><span></span><span></span>
+                </button>
                 <div
                   data-dc-tpl="27"
+                  id="site-nav-links"
                   style="display: flex; align-items: center; gap: 32px"
                 >
                   <div
